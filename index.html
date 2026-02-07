@@ -1,0 +1,823 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Юрист для продавцов маркетплейсов — Москва и онлайн по РФ</title>
+  <meta name="description" content="Споры с Wildberries и Ozon: штрафы и удержания, претензии по товарным знакам, возвраты, подмена, утеря и порча товара, подготовка к арбитражу. Москва и онлайн по РФ." />
+  <meta name="robots" content="index,follow" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta property="og:title" content="Юрист для продавцов маркетплейсов" />
+  <meta property="og:description" content="Штрафы, удержания, претензии правообладателей, возвраты, блокировки. Москва и онлайн по РФ." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta name="theme-color" content="#0b1220" />
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#0f1a2e;
+      --muted:#91a4c7;
+      --text:#e8efff;
+      --accent:#67e8f9;
+      --accent2:#a78bfa;
+      --line:rgba(255,255,255,.10);
+      --shadow:0 14px 40px rgba(0,0,0,.35);
+      --radius:18px;
+      --radius2:26px;
+      --max:1100px;
+      --pad:24px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      background:
+        radial-gradient(1200px 700px at 10% 0%, rgba(103,232,249,.16), transparent 55%),
+        radial-gradient(1000px 650px at 90% 20%, rgba(167,139,250,.14), transparent 55%),
+        linear-gradient(180deg, #070b14, #0b1220 40%, #070b14);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 var(--pad)}
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.72);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px; padding:14px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+    .logo{
+      width:38px; height:38px; border-radius:12px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(103,232,249,.95), rgba(103,232,249,.15) 55%, transparent 60%),
+        radial-gradient(circle at 70% 65%, rgba(167,139,250,.95), rgba(167,139,250,.15) 55%, transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.16);
+      box-shadow: 0 10px 24px rgba(0,0,0,.28);
+    }
+    .brand small{display:block; color:var(--muted); font-weight:600; letter-spacing:.1px}
+    .links{display:flex; gap:14px; flex-wrap:wrap; align-items:center}
+    .links a{
+      padding:8px 10px; border-radius:12px; color:var(--muted);
+      border:1px solid transparent;
+    }
+    .links a:hover{color:var(--text); border-color:rgba(255,255,255,.12); background:rgba(255,255,255,.04)}
+    .ctaRow{display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color:var(--text);
+      font-weight:650;
+    }
+    .pill span{color:var(--muted); font-weight:600}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:10px 14px; border-radius:14px; border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      font-weight:700;
+      cursor:pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.08); border-color:rgba(255,255,255,.22)}
+    .btn.primary{
+      border-color: rgba(103,232,249,.35);
+      background: linear-gradient(135deg, rgba(103,232,249,.18), rgba(167,139,250,.14));
+      box-shadow: 0 16px 44px rgba(0,0,0,.25);
+    }
+    .btn.primary:hover{border-color: rgba(103,232,249,.55)}
+    .hero{
+      padding:56px 0 18px;
+    }
+    .heroGrid{
+      display:grid; grid-template-columns: 1.25fr .75fr; gap:18px;
+      align-items:stretch;
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--line);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+    }
+    .heroMain{padding:26px}
+    h1{
+      margin:0 0 10px;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height:1.12;
+      letter-spacing:-.5px;
+    }
+    .lead{
+      margin:0;
+      color: var(--muted);
+      font-size: 16.5px;
+      max-width: 62ch;
+    }
+    .badges{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top:14px;
+    }
+    .badge{
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color:var(--text);
+      font-weight:650;
+      font-size:13px;
+    }
+    .badge b{color:var(--accent); font-weight:800}
+    .heroActions{
+      margin-top:18px;
+      display:flex; gap:10px; flex-wrap:wrap;
+    }
+    .heroSide{padding:18px}
+    .sideTitle{margin:0 0 10px; font-size:16px; letter-spacing:.1px}
+    .sideText{margin:0 0 12px; color:var(--muted); font-size:14.5px}
+    .miniGrid{
+      display:grid; grid-template-columns: 1fr; gap:10px;
+    }
+    .mini{
+      padding:12px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.035);
+    }
+    .mini b{display:block; margin-bottom:4px}
+    .mini p{margin:0; color:var(--muted); font-size:13.5px}
+    .section{padding:34px 0}
+    .section h2{
+      margin:0 0 10px;
+      font-size: clamp(22px, 2.3vw, 28px);
+      letter-spacing:-.3px;
+    }
+    .section p{margin:0; color:var(--muted)}
+    .grid3{
+      margin-top:14px;
+      display:grid; gap:12px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .grid2{
+      margin-top:14px;
+      display:grid; gap:12px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .item{
+      padding:16px;
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.035);
+    }
+    .item h3{margin:0 0 6px; font-size:16px}
+    .item p{margin:0; color:var(--muted); font-size:14.5px}
+    .kpi{
+      display:flex; gap:12px; flex-wrap:wrap;
+      margin-top:14px;
+    }
+    .kpi .pill{background: rgba(255,255,255,.035)}
+    .price{
+      display:flex; flex-direction:column; gap:10px;
+      padding:18px;
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.14);
+      background: linear-gradient(135deg, rgba(103,232,249,.10), rgba(167,139,250,.08));
+    }
+    .price h3{margin:0; font-size:18px}
+    .price p{margin:0; color:var(--muted); font-size:14.5px}
+    .price .sum{font-size:22px; font-weight:900; letter-spacing:-.3px}
+    .price .sum small{font-size:14px; color:var(--muted); font-weight:700}
+    .price .btn{width:100%}
+    .process{
+      display:grid; grid-template-columns: repeat(4, 1fr); gap:12px; margin-top:14px;
+    }
+    .step{
+      padding:14px;
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+    }
+    .step .n{
+      width:34px; height:34px; border-radius:12px;
+      display:flex; align-items:center; justify-content:center;
+      font-weight:900;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      color: var(--accent);
+      margin-bottom:10px;
+    }
+    .step b{display:block; margin-bottom:6px}
+    .step p{margin:0; color:var(--muted); font-size:14px}
+    details{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      border-radius: var(--radius);
+      padding:12px 14px;
+    }
+    details + details{margin-top:10px}
+    summary{
+      cursor:pointer;
+      font-weight:800;
+      list-style:none;
+    }
+    summary::-webkit-details-marker{display:none}
+    details p{margin:10px 0 0; color:var(--muted)}
+    .contact{
+      display:grid; grid-template-columns: 1.05fr .95fr; gap:12px;
+      align-items:stretch;
+      margin-top:14px;
+    }
+    form{
+      padding:18px;
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.03);
+    }
+    label{display:block; font-weight:750; margin:10px 0 6px}
+    input, select, textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(11,18,32,.60);
+      color: var(--text);
+      outline:none;
+    }
+    textarea{min-height:120px; resize:vertical}
+    .hint{margin:8px 0 0; color:var(--muted); font-size:12.8px}
+    .row{display:grid; grid-template-columns: 1fr 1fr; gap:10px}
+    .consent{
+      display:flex; gap:10px; align-items:flex-start;
+      margin-top:10px;
+      color: var(--muted);
+      font-size:13px;
+    }
+    .consent input{width:auto; margin-top:3px}
+    .noteBox{
+      padding:18px;
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.14);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+    }
+    .noteBox h3{margin:0 0 8px}
+    .noteBox p{margin:0 0 10px; color:var(--muted); font-size:14.5px}
+    .mutedSmall{color:var(--muted); font-size:12.5px}
+    footer{
+      padding:26px 0 34px;
+      color: var(--muted);
+      border-top:1px solid var(--line);
+      margin-top:30px;
+    }
+    .footGrid{display:grid; grid-template-columns: 1fr 1fr; gap:12px}
+    .footGrid a{color:var(--muted); text-decoration:underline; text-decoration-color: rgba(255,255,255,.18)}
+    .toast{
+      position:fixed; left:50%; bottom:18px; transform:translateX(-50%);
+      max-width: calc(var(--max) - 40px);
+      padding:12px 14px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(11,18,32,.88);
+      box-shadow: var(--shadow);
+      display:none;
+      z-index:60;
+    }
+
+    @media (max-width: 980px){
+      .heroGrid{grid-template-columns: 1fr}
+      .grid3{grid-template-columns: 1fr}
+      .grid2{grid-template-columns: 1fr}
+      .process{grid-template-columns: 1fr 1fr}
+      .contact{grid-template-columns: 1fr}
+      .row{grid-template-columns: 1fr}
+      .ctaRow{justify-content:flex-start}
+      .links{display:none}
+    }
+    @media (max-width: 520px){
+      .process{grid-template-columns: 1fr}
+    }
+  </style>
+
+  <!-- Schema.org: поправьте название, телефон, адрес, сайт -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"LegalService",
+    "name":"Юрист для продавцов маркетплейсов",
+    "areaServed":["RU","Moscow","Moscow Oblast"],
+    "serviceType":[
+      "Споры с маркетплейсами",
+      "Оспаривание штрафов и удержаний",
+      "Товарные знаки и претензии правообладателей",
+      "Возвраты, подмена, утеря и порча товара",
+      "Подготовка к арбитражу"
+    ],
+    "url":"https://example.com",
+    "telephone":"+7-000-000-00-00"
+  }
+  </script>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <div class="nav">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            Юрист для продавцов маркетплейсов
+            <small>Москва и онлайн по РФ</small>
+          </div>
+        </div>
+
+        <nav class="links" aria-label="Навигация">
+          <a href="#services">Услуги</a>
+          <a href="#packages">Пакеты</a>
+          <a href="#process">Порядок работы</a>
+          <a href="#faq">Вопросы</a>
+          <a href="#contact">Контакты</a>
+        </nav>
+
+        <div class="ctaRow">
+          <div class="pill" title="Уточните контакты в коде">
+            <span>Тел.</span><strong id="phoneText">+7 (000) 000-00-00</strong>
+          </div>
+          <a class="btn primary" href="#contact">Оценить ситуацию</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="heroGrid">
+          <div class="card heroMain">
+            <h1>Споры с Wildberries и Ozon без истерики и самодеятельности</h1>
+            <p class="lead">
+              Я помогаю продавцам маркетплейсов, когда у площадки внезапно появляются штрафы, удержания, «весёлые» возвраты,
+              претензии правообладателей по товарным знакам и все остальные способы сделать вашу маржу декоративной.
+              Работаю в Москве и дистанционно по России, с фокусом на документальную позицию и подготовку к арбитражу.
+            </p>
+
+            <div class="badges" aria-label="Ключевые направления">
+              <div class="badge"><b>Штрафы</b> и удержания</div>
+              <div class="badge"><b>Товарные знаки</b> и претензии правообладателей</div>
+              <div class="badge"><b>Возвраты</b>, подмена, утеря, порча</div>
+              <div class="badge"><b>Подготовка к суду</b> и доказательства</div>
+            </div>
+
+            <div class="heroActions">
+              <a class="btn primary" href="#packages">Посмотреть пакеты</a>
+              <a class="btn" href="#services">Что именно делаю</a>
+              <button class="btn" type="button" id="copyTelegram">Скопировать Telegram</button>
+            </div>
+
+            <div class="kpi" aria-label="Параметры работы">
+              <div class="pill"><span>Формат:</span> дистанционно</div>
+              <div class="pill"><span>Фокус:</span> документы и стратегия</div>
+              <div class="pill"><span>Срок:</span> обычно 24–72 часа</div>
+            </div>
+          </div>
+
+          <div class="card heroSide">
+            <p class="sideTitle">Если коротко, когда ко мне приходят</p>
+            <p class="sideText">
+              Когда уже понятно, что «написать в поддержку ещё раз» не является юридической стратегией.
+            </p>
+
+            <div class="miniGrid">
+              <div class="mini">
+                <b>Штрафы и удержания</b>
+                <p>Проверяю основания, собираю доказательства, готовлю позицию и претензионный блок.</p>
+              </div>
+              <div class="mini">
+                <b>Претензии по товарным знакам</b>
+                <p>Делаю возражения, аргументацию по квалификации, готовлю комплект на досудебку и суд.</p>
+              </div>
+              <div class="mini">
+                <b>Возвраты, подмена, утеря</b>
+                <p>Фиксирую факты, делаю расчёты, выстраиваю причинность и убытки, готовлю взыскание.</p>
+              </div>
+              <div class="mini">
+                <b>Арбитраж</b>
+                <p>Готовлю иск, отзыв, доказательственную матрицу и ходатайства, чтобы судье было понятно.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="wrap">
+        <h2>Что именно входит в работу</h2>
+        <p>
+          Я не продаю «консультации обо всём на свете». Я продаю конкретный результат: юридически выверенную позицию,
+          пригодную для переговоров, претензии и, при необходимости, арбитража.
+        </p>
+
+        <div class="grid3" role="list">
+          <div class="item" role="listitem">
+            <h3>Штрафы, удержания, списания</h3>
+            <p>
+              Анализ оснований, проверка документов и логики начислений, подготовка возражений, претензий и расчётов.
+            </p>
+          </div>
+          <div class="item" role="listitem">
+            <h3>Товарные знаки и правообладатели</h3>
+            <p>
+              Возражения на претензии, квалификация состава нарушения, аргументация по добросовестности, подготовка к спору.
+            </p>
+          </div>
+          <div class="item" role="listitem">
+            <h3>Возвраты, подмена, утеря, порча</h3>
+            <p>
+              Фиксация фактов, переписка, акты, причинная связь и убытки. Подготовка требований и комплекта доказательств.
+            </p>
+          </div>
+          <div class="item" role="listitem">
+            <h3>Блокировки и ограничения</h3>
+            <p>
+              Правовая позиция и пакет документов для обращения и эскалации, если площадка делает вид, что вас не существует.
+            </p>
+          </div>
+          <div class="item" role="listitem">
+            <h3>Претензии и переговоры</h3>
+            <p>
+              Досудебная претензия, ответы на претензии, рамка переговоров, фиксация предложений и рисков.
+            </p>
+          </div>
+          <div class="item" role="listitem">
+            <h3>Подготовка к арбитражу</h3>
+            <p>
+              Иск, отзыв, доказательственная матрица, расчёты, перечень ходатайств и слабых мест, чтобы не удивляться в суде.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="packages">
+      <div class="wrap">
+        <h2>Пакеты</h2>
+        <p>
+          Упаковка решает две проблемы: вы понимаете, что покупаете, а я понимаю, сколько времени вы собираетесь отнять у меня и моих нервов.
+        </p>
+
+        <div class="grid3">
+          <div class="price">
+            <h3>Экспресс-оценка</h3>
+            <p>Разбор ситуации и план действий. Подходит, если вы не уверены, куда бить и чем бить.</p>
+            <div class="sum">от 9 900 <small>₽</small></div>
+            <a class="btn primary" href="#contact" data-package="Экспресс-оценка">Оставить заявку</a>
+          </div>
+
+          <div class="price">
+            <h3>Претензионный блок</h3>
+            <p>Позиция + претензия + приложения + логика доказательств. Подходит для штрафов, удержаний, возвратов, ТЗ.</p>
+            <div class="sum">от 24 900 <small>₽</small></div>
+            <a class="btn primary" href="#contact" data-package="Претензионный блок">Оставить заявку</a>
+          </div>
+
+          <div class="price">
+            <h3>Пакет «под суд»</h3>
+            <p>Комплект документов для арбитража: иск или отзыв, матрица доказательств, расчёты, ходатайства.</p>
+            <div class="sum">от 49 900 <small>₽</small></div>
+            <a class="btn primary" href="#contact" data-package="Пакет «под суд»">Оставить заявку</a>
+          </div>
+        </div>
+
+        <p class="hint">
+          Стоимость зависит от объёма доказательств, числа эпизодов и того, насколько ваша переписка с площадкой похожа на роман без сюжета.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="process">
+      <div class="wrap">
+        <h2>Порядок работы</h2>
+        <p>
+          Процесс сделан так, чтобы результат был предсказуемым, а не «посмотрим, как пойдёт».
+        </p>
+
+        <div class="process">
+          <div class="step">
+            <div class="n">1</div>
+            <b>Входные данные</b>
+            <p>Вы присылаете документы, скриншоты, уведомления, расчёты и ссылки на регламенты, если они применимы.</p>
+          </div>
+          <div class="step">
+            <div class="n">2</div>
+            <b>Диагностика</b>
+            <p>Я отделяю эмоции от фактов, выделяю юридически значимые обстоятельства и слабые места.</p>
+          </div>
+          <div class="step">
+            <div class="n">3</div>
+            <b>Позиция и документы</b>
+            <p>Готовлю позицию, претензию или процессуальный комплект, с доказательственной логикой и расчётами.</p>
+          </div>
+          <div class="step">
+            <div class="n">4</div>
+            <b>Дальнейшие шаги</b>
+            <p>Фиксируем тактику: переговоры, досудебка, суд, либо отказ от слабой линии, чтобы не платить за иллюзии.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="wrap">
+        <h2>Частые вопросы</h2>
+        <p>
+          Часть ответов неприятна, зато экономит время и деньги.
+        </p>
+
+        <div style="margin-top:14px">
+          <details>
+            <summary>Вы работаете только по Москве?</summary>
+            <p>Приоритет у Москвы и области, но основная работа документальная, поэтому по России я работаю дистанционно.</p>
+          </details>
+
+          <details>
+            <summary>Вы занимаетесь уголовными делами?</summary>
+            <p>Нет. Уголовные истории не беру. В моей специализации споры по гражданскому и арбитражному контуру.</p>
+          </details>
+
+          <details>
+            <summary>Можно ли «просто консультацию на час»?</summary>
+            <p>Можно, если вы готовы к тому, что консультация будет не «поговорить», а строгая диагностика с планом действий и списком документов.</p>
+          </details>
+
+          <details>
+            <summary>Вы гарантируете исход?</summary>
+            <p>Гарантировать можно только факт оплаты. Я гарантирую качество анализа, структуру позиции и аккуратность документов, а не поведение площадки и суда.</p>
+          </details>
+
+          <details>
+            <summary>Сколько времени занимает подготовка?</summary>
+            <p>Обычно 24–72 часа после получения полного пакета материалов. Если материалов нет, то и магии тоже нет.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="wrap">
+        <h2>Заявка</h2>
+        <p>
+          Опишите ситуацию и приложите то, что у вас есть. Чем меньше догадок, тем быстрее результат.
+        </p>
+
+        <div class="contact">
+          <form id="leadForm" action="#" method="post" novalidate>
+            <div class="row">
+              <div>
+                <label for="name">Имя</label>
+                <input id="name" name="name" type="text" autocomplete="name" placeholder="Сергей" required />
+              </div>
+              <div>
+                <label for="phone">Телефон</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" required />
+              </div>
+            </div>
+
+            <div class="row">
+              <div>
+                <label for="mp">Маркетплейс</label>
+                <select id="mp" name="marketplace" required>
+                  <option value="">Выберите</option>
+                  <option>Wildberries</option>
+                  <option>Ozon</option>
+                  <option>Яндекс Маркет</option>
+                  <option>Другое</option>
+                </select>
+              </div>
+              <div>
+                <label for="topic">Проблема</label>
+                <select id="topic" name="topic" required>
+                  <option value="">Выберите</option>
+                  <option>Штрафы и удержания</option>
+                  <option>Претензия по товарному знаку</option>
+                  <option>Возвраты, подмена, утеря, порча</option>
+                  <option>Блокировка и ограничения</option>
+                  <option>Подготовка к суду</option>
+                </select>
+              </div>
+            </div>
+
+            <label for="details">Краткое описание</label>
+            <textarea id="details" name="details" placeholder="Что случилось, какие суммы, какие даты, какие документы есть." required></textarea>
+
+            <label for="package">Пакет</label>
+            <select id="package" name="package">
+              <option value="">Не выбрано</option>
+              <option>Экспресс-оценка</option>
+              <option>Претензионный блок</option>
+              <option>Пакет «под суд»</option>
+            </select>
+
+            <div class="consent">
+              <input id="consent" name="consent" type="checkbox" required />
+              <label for="consent" style="margin:0; font-weight:650">
+                Я согласен на обработку персональных данных для ответа на заявку.
+              </label>
+            </div>
+
+            <p class="hint">
+              После нажатия «Отправить» форма покажет сообщение. Для реальной отправки подключите обработчик на сервере или сервис форм.
+            </p>
+
+            <button class="btn primary" type="submit">Отправить</button>
+          </form>
+
+          <div class="noteBox">
+            <h3>Контакты</h3>
+            <p>
+              Телефон: <b id="phoneText2">+7 (000) 000-00-00</b><br />
+              Telegram: <b id="tgText">@your_telegram</b><br />
+              Email: <b id="mailText">mail@example.com</b>
+            </p>
+            <p class="mutedSmall">
+              Важно: информация на сайте не является публичной офертой и не заменяет индивидуальную юридическую консультацию.
+              Конкретные выводы зависят от документов, фактов и регламентов площадки, а не от ваших ожиданий.
+            </p>
+
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
+              <button class="btn" type="button" id="copyPhone">Скопировать телефон</button>
+              <button class="btn" type="button" id="copyEmail">Скопировать email</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="toast" id="toast" role="status" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footGrid">
+        <div>
+          <b>Юрист для продавцов маркетплейсов</b><br />
+          <span>Москва и онлайн по РФ</span>
+        </div>
+        <div style="text-align:right">
+          <a href="#contact">Оставить заявку</a><br />
+          <span>© <span id="year"></span></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ==========================
+    // НАСТРОЙКИ (замените на свои)
+    // ==========================
+    const CONTACTS = {
+      phoneDisplay: "+7 (000) 000-00-00",
+      phoneRaw: "+70000000000",
+      telegram: "@your_telegram",
+      email: "mail@example.com",
+      siteUrl: "https://example.com"
+    };
+
+    // Если хотите подключить реальную отправку:
+    // 1) замените action у формы на URL обработчика (backend, formspree, etc)
+    // 2) уберите preventDefault в submitForm()
+
+    const el = (id) => document.getElementById(id);
+
+    function toast(msg){
+      const t = el("toast");
+      t.textContent = msg;
+      t.style.display = "block";
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(()=>{ t.style.display = "none"; }, 2600);
+    }
+
+    async function copyText(text){
+      try{
+        await navigator.clipboard.writeText(text);
+        toast("Скопировано. Люди обожают копировать, видимо, так спокойнее.");
+      }catch(e){
+        // fallback
+        const tmp = document.createElement("textarea");
+        tmp.value = text;
+        document.body.appendChild(tmp);
+        tmp.select();
+        document.execCommand("copy");
+        tmp.remove();
+        toast("Скопировано.");
+      }
+    }
+
+    function applyContacts(){
+      el("phoneText").textContent = CONTACTS.phoneDisplay;
+      el("phoneText2").textContent = CONTACTS.phoneDisplay;
+      el("tgText").textContent = CONTACTS.telegram;
+      el("mailText").textContent = CONTACTS.email;
+      el("year").textContent = new Date().getFullYear();
+    }
+
+    function setPackageFromButton(){
+      document.querySelectorAll("[data-package]").forEach(a=>{
+        a.addEventListener("click", ()=>{
+          const pkg = a.getAttribute("data-package");
+          const pkgSelect = el("package");
+          if(pkg && pkgSelect){
+            pkgSelect.value = pkg;
+          }
+        });
+      });
+    }
+
+    function validateForm(form){
+      const required = form.querySelectorAll("[required]");
+      for(const field of required){
+        if(field.type === "checkbox" && !field.checked){
+          field.focus();
+          toast("Нужен чекбокс согласия, иначе это будет незаконно и скучно.");
+          return false;
+        }
+        if(field.value.trim() === ""){
+          field.focus();
+          toast("Заполните обязательные поля. Да, все. Даже это.");
+          return false;
+        }
+      }
+      // простая проверка телефона: только чтобы не было совсем пустого мусора
+      const phone = el("phone").value.replace(/[^\d+]/g,"");
+      if(phone.length < 10){
+        el("phone").focus();
+        toast("Телефон выглядит подозрительно коротким.");
+        return false;
+      }
+      return true;
+    }
+
+    function submitForm(e){
+      e.preventDefault();
+      const form = e.currentTarget;
+      if(!validateForm(form)) return;
+
+      const data = {
+        name: el("name").value.trim(),
+        phone: el("phone").value.trim(),
+        marketplace: el("mp").value,
+        topic: el("topic").value,
+        details: el("details").value.trim(),
+        package: el("package").value
+      };
+
+      // Здесь должно быть реальное API.
+      // Пока имитируем «успех», чтобы вы проверили интерфейс.
+      console.log("Lead payload:", data);
+      toast("Заявка сформирована. Теперь подключите отправку на сервер, и будет совсем взросло.");
+
+      form.reset();
+    }
+
+    function wireButtons(){
+      el("copyTelegram").addEventListener("click", ()=> copyText(CONTACTS.telegram));
+      el("copyPhone").addEventListener("click", ()=> copyText(CONTACTS.phoneRaw));
+      el("copyEmail").addEventListener("click", ()=> copyText(CONTACTS.email));
+      el("leadForm").addEventListener("submit", submitForm);
+    }
+
+    applyContacts();
+    setPackageFromButton();
+    wireButtons();
+  </script>
+
+  <!-- Яндекс.Метрика: вставьте ваш код ниже -->
+  <!--
+  <script type="text/javascript" >
+     (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+     m[i].l=1*new Date();
+     for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+     k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+     (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+     ym(XXXXXXX, "init", {
+          clickmap:true,
+          trackLinks:true,
+          accurateTrackBounce:true,
+          webvisor:true
+     });
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/XXXXXXX" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  -->
+</body>
+</html>

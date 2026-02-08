@@ -4,602 +4,28 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Селлер.Право — документы и переговоры по спорам с маркетплейсами</title>
-  <meta name="description" content="Претензии, ответы, переговоры с площадкой, иски и возражения. Без лозунгов: выбираете ситуацию и сразу видите результат, срок и ориентир цены." />
+  <meta name="description" content="Претензии, ответы, переговоры с площадкой, иски и возражения. Выбираете ситуацию и сразу видите результат, срок и ориентир цены." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@600;700;800&display=swap" rel="stylesheet">
 
-  <style>
-    :root{
-      --bg: #ffffff;
-      --paper: #ffffff;
-      --ink: #0b0f14;
-      --muted: rgba(11,15,20,.66);
-      --line: rgba(11,15,20,.10);
-      --soft: rgba(11,15,20,.06);
-
-      --red: #e31b23;
-      --yellow: #ffc400;
-
-      --headerBg: #0b0f14;
-      --headerLine: rgba(255,255,255,.12);
-      --headerText: rgba(255,255,255,.86);
-
-      --radius: 16px;
-      --radiusSm: 12px;
-
-      --shadow: 0 10px 30px rgba(11,15,20,.08);
-      --shadow2: 0 18px 50px rgba(11,15,20,.12);
-
-      --max: 1120px;
-    }
-
-    *{ box-sizing: border-box; }
-    html{ scroll-behavior: smooth; }
-    body{
-      margin:0;
-      background: var(--bg);
-      color: var(--ink);
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: geometricPrecision;
-    }
-
-    a{ color: inherit; text-decoration: none; }
-    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
-      outline: 3px solid rgba(255,196,0,.55);
-      outline-offset: 2px;
-      border-radius: 10px;
-    }
-
-    .container{
-      width: min(var(--max), calc(100% - 40px));
-      margin: 0 auto;
-    }
-
-    /* HEADER */
-    .header{
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: var(--headerBg);
-      border-bottom: 1px solid var(--headerLine);
-    }
-    .header__inner{
-      display:flex;
-      align-items:center;
-      justify-content: space-between;
-      gap: 14px;
-      padding: 12px 0;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      min-width: 220px;
-    }
-    .brand__logo{
-      width: 44px; height: 30px; flex: 0 0 auto;
-      filter: drop-shadow(0 6px 16px rgba(0,0,0,.18));
-    }
-    .brand__text{
-      font-family: "Inter Tight", Inter, system-ui, sans-serif;
-      letter-spacing: .2px;
-      color: #fff;
-      font-weight: 800;
-      font-size: 18px;
-      line-height: 1;
-      white-space: nowrap;
-    }
-    .brand__text .dot{ color: var(--yellow); }
-
-    .toplinks{
-      display:flex;
-      align-items:center;
-      gap: 8px;
-      flex-wrap: nowrap;
-    }
-    .toplink{
-      color: var(--headerText);
-      font-weight: 800;
-      font-size: 13px;
-      padding: 9px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
-      white-space: nowrap;
-    }
-    .toplink:hover{
-      background: rgba(255,255,255,.10);
-      border-color: rgba(255,255,255,.22);
-      transform: translateY(-1px);
-    }
-    .toplink--tg{
-      border-color: rgba(255,196,0,.30);
-    }
-    .tgDot{
-      width: 8px; height: 8px;
-      border-radius: 2px;
-      background: var(--yellow);
-      display:inline-block;
-      transform: rotate(45deg);
-      margin-right: 8px;
-    }
-
-    .header__actions{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap: 10px;
-      border-radius: 999px;
-      padding: 10px 14px;
-      font-weight: 900;
-      font-size: 13px;
-      letter-spacing: .2px;
-      border: 1px solid transparent;
-      cursor: pointer;
-      user-select: none;
-      transition: transform .12s ease, box-shadow .12s ease, background .12s ease, border-color .12s ease;
-      white-space: nowrap;
-    }
-    .btn--primary{
-      background: #fff;
-      color: var(--ink);
-      border-color: rgba(255,255,255,.18);
-      box-shadow: 0 10px 30px rgba(0,0,0,.18);
-    }
-    .btn--primary:hover{ transform: translateY(-1px); box-shadow: 0 16px 46px rgba(0,0,0,.22); }
-    .btn--ghost{
-      background: transparent;
-      color: #fff;
-      border-color: rgba(255,255,255,.18);
-    }
-    .btn--ghost:hover{ background: rgba(255,255,255,.08); transform: translateY(-1px); }
-
-    @media (max-width: 980px){
-      .toplinks{ display:none; }
-      .brand{ min-width: unset; }
-    }
-
-    /* HERO */
-    .hero{
-      padding: 34px 0 18px;
-      background:
-        radial-gradient(1200px 500px at 20% 0%, rgba(255,196,0,.18), transparent 60%),
-        radial-gradient(900px 420px at 80% 10%, rgba(227,27,35,.10), transparent 55%),
-        #fff;
-    }
-
-    .hero__grid{
-      display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 18px;
-      align-items: start;
-    }
-    @media (max-width: 980px){
-      .hero__grid{ grid-template-columns: 1fr; }
-    }
-
-    .h1{
-      font-family: "Inter Tight", Inter, system-ui, sans-serif;
-      font-size: 40px;
-      line-height: 1.04;
-      margin: 0 0 10px;
-      letter-spacing: -0.6px;
-    }
-    @media (max-width: 520px){
-      .h1{ font-size: 34px; }
-    }
-
-    .sub{
-      font-size: 16px;
-      line-height: 1.55;
-      color: var(--muted);
-      margin: 0 0 18px;
-      max-width: 56ch;
-    }
-
-    .chipsWrap{
-      display:flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 12px;
-    }
-    .chipsLabel{
-      font-weight: 900;
-      font-size: 12px;
-      letter-spacing: .3px;
-      color: rgba(11,15,20,.66);
-      text-transform: uppercase;
-    }
-    .chips{
-      display:flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-    @media (max-width: 700px){
-      .chips{
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        padding-bottom: 6px;
-        -webkit-overflow-scrolling: touch;
-      }
-      .chips::-webkit-scrollbar{ height: 6px; }
-      .chips::-webkit-scrollbar-thumb{ background: rgba(11,15,20,.12); border-radius: 999px; }
-    }
-
-    .chip{
-      border: 1px solid var(--line);
-      background: rgba(11,15,20,.04);
-      color: var(--ink);
-      padding: 10px 12px;
-      border-radius: 999px;
-      font-weight: 900;
-      font-size: 13px;
-      cursor: pointer;
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
-      white-space: nowrap;
-    }
-    .chip:hover{ transform: translateY(-1px); border-color: rgba(11,15,20,.18); }
-    .chip.is-active{
-      background: rgba(255,196,0,.20);
-      border-color: rgba(255,196,0,.55);
-    }
-    .chip .bolt{
-      display:inline-block;
-      width: 10px;
-      height: 10px;
-      margin-right: 8px;
-      background: var(--yellow);
-      transform: rotate(45deg);
-      border-radius: 2px;
-    }
-
-    /* Offer card */
-    .offer{
-      background: var(--paper);
-      border: 1px solid rgba(11,15,20,.10);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 18px;
-    }
-    .offer__top{
-      display:flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
-      font-weight: 900;
-      font-size: 12px;
-      letter-spacing: .3px;
-      text-transform: uppercase;
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(227,27,35,.18);
-      background: rgba(227,27,35,.06);
-      color: rgba(11,15,20,.82);
-      white-space: nowrap;
-    }
-    .badge .dot{
-      width: 8px; height: 8px; border-radius: 2px;
-      background: var(--red);
-      transform: rotate(45deg);
-      display:inline-block;
-    }
-
-    .offer__title{
-      font-family: "Inter Tight", Inter, system-ui, sans-serif;
-      font-size: 18px;
-      line-height: 1.2;
-      margin: 6px 0 0;
-      letter-spacing: -0.2px;
-    }
-
-    .offer__rows{
-      display:flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 10px;
-    }
-
-    .row{
-      border: 1px solid var(--line);
-      border-radius: var(--radiusSm);
-      padding: 12px 12px;
-      background: rgba(11,15,20,.02);
-    }
-    .row__label{
-      font-weight: 900;
-      font-size: 12px;
-      letter-spacing: .3px;
-      text-transform: uppercase;
-      color: rgba(11,15,20,.62);
-      margin-bottom: 6px;
-    }
-    .row__text{
-      margin:0;
-      color: rgba(11,15,20,.86);
-      font-size: 15px;
-      line-height: 1.45;
-    }
-    .row__list{
-      margin: 0;
-      padding-left: 18px;
-      color: rgba(11,15,20,.86);
-      font-size: 15px;
-      line-height: 1.45;
-    }
-    .row__list li{ margin: 6px 0; }
-
-    .offer__cta{
-      display:flex;
-      align-items:center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-top: 14px;
-      padding-top: 14px;
-      border-top: 1px solid var(--line);
-    }
-    .price{
-      display:flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-    .price__label{
-      font-weight: 900;
-      font-size: 12px;
-      letter-spacing: .3px;
-      text-transform: uppercase;
-      color: rgba(11,15,20,.62);
-    }
-    .price__value{
-      font-family: "Inter Tight", Inter, system-ui, sans-serif;
-      font-weight: 900;
-      font-size: 20px;
-      letter-spacing: -0.2px;
-    }
-
-    .ctaGroup{
-      display:flex;
-      gap: 10px;
-      align-items:center;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    /* Trust strip */
-    .strip{
-      padding: 14px 0 22px;
-      background: #fff;
-    }
-    .strip__inner{
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      align-items:center;
-    }
-    .pill{
-      border: 1px solid var(--line);
-      background: rgba(11,15,20,.02);
-      padding: 10px 12px;
-      border-radius: 999px;
-      font-weight: 900;
-      font-size: 13px;
-      color: rgba(11,15,20,.82);
-      transition: transform .12s ease, border-color .12s ease, background .12s ease;
-    }
-    .pill:hover{ transform: translateY(-1px); border-color: rgba(11,15,20,.18); background: rgba(11,15,20,.03); }
-    .pill .mark{
-      display:inline-block;
-      width: 10px; height: 10px;
-      border-radius: 2px;
-      transform: rotate(45deg);
-      margin-right: 8px;
-      background: var(--yellow);
-    }
-
-    /* Minimal services */
-    .section{
-      padding: 24px 0;
-    }
-    .section__title{
-      font-family: "Inter Tight", Inter, system-ui, sans-serif;
-      font-size: 18px;
-      letter-spacing: -0.2px;
-      margin: 0 0 12px;
-    }
-    .grid4{
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-    }
-    @media (max-width: 980px){
-      .grid4{ grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 520px){
-      .grid4{ grid-template-columns: 1fr; }
-    }
-    .card{
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: #fff;
-      padding: 14px;
-      box-shadow: var(--shadow);
-      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
-    }
-    .card:hover{
-      transform: translateY(-2px);
-      box-shadow: var(--shadow2);
-      border-color: rgba(11,15,20,.18);
-    }
-    .card__kicker{
-      font-weight: 900;
-      font-size: 12px;
-      letter-spacing: .3px;
-      text-transform: uppercase;
-      color: rgba(11,15,20,.60);
-      margin-bottom: 8px;
-    }
-    .card__title{
-      margin: 0 0 8px;
-      font-family: "Inter Tight", Inter, system-ui, sans-serif;
-      font-weight: 900;
-      font-size: 16px;
-      line-height: 1.2;
-    }
-    .card__text{
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.45;
-    }
-    .card__links{
-      margin-top: 12px;
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      align-items:center;
-    }
-    .link{
-      font-weight: 900;
-      font-size: 13px;
-      border-bottom: 2px solid rgba(255,196,0,.0);
-      padding-bottom: 1px;
-      transition: border-color .12s ease;
-    }
-    .link:hover{ border-color: rgba(255,196,0,.75); }
-    .link--muted{ color: rgba(11,15,20,.66); }
-
-    /* Pricing - minimal */
-    .pricingRow{
-      display:flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .priceCard{
-      flex: 1 1 240px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 14px;
-      background: rgba(11,15,20,.02);
-    }
-    .priceCard__name{
-      font-weight: 900;
-      font-size: 14px;
-      margin: 0 0 6px;
-    }
-    .priceCard__val{
-      font-family: "Inter Tight", Inter, system-ui, sans-serif;
-      font-weight: 900;
-      font-size: 22px;
-      margin: 0 0 8px;
-    }
-    .priceCard__note{
-      margin: 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.45;
-    }
-
-    /* Contact */
-    .contact{
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: #fff;
-      padding: 16px;
-      box-shadow: var(--shadow);
-    }
-    .form{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 12px;
-    }
-    @media (max-width: 700px){
-      .form{ grid-template-columns: 1fr; }
-    }
-    .field label{
-      display:block;
-      font-weight: 900;
-      font-size: 12px;
-      letter-spacing: .3px;
-      text-transform: uppercase;
-      color: rgba(11,15,20,.62);
-      margin-bottom: 6px;
-    }
-    .field input, .field textarea, .field select{
-      width: 100%;
-      padding: 12px 12px;
-      border-radius: 12px;
-      border: 1px solid rgba(11,15,20,.14);
-      background: rgba(11,15,20,.02);
-      font: inherit;
-      color: var(--ink);
-    }
-    .field textarea{ min-height: 110px; resize: vertical; }
-    .form__actions{
-      grid-column: 1 / -1;
-      display:flex;
-      justify-content: space-between;
-      align-items:center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 4px;
-    }
-    .small{
-      color: rgba(11,15,20,.60);
-      font-size: 13px;
-      line-height: 1.45;
-      margin: 0;
-      max-width: 72ch;
-    }
-
-    /* Footer */
-    .footer{
-      padding: 22px 0 40px;
-      border-top: 1px solid var(--line);
-      background: #fff;
-    }
-    .footer__inner{
-      display:flex;
-      gap: 14px;
-      align-items:flex-start;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-    .footlinks{
-      display:flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      align-items:center;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body id="top">
 <header class="header">
   <div class="container header__inner">
     <a class="brand" href="#top" aria-label="Селлер.Право — на главную">
-      <!-- Замените на assets/logo.svg когда будет готово -->
+      <!-- Когда будет готов логотип: раскомментируйте img и удалите SVG -->
+      <!-- <img src="assets/logo.svg" alt="Селлер.Право" class="brand__logo" /> -->
+
       <svg class="brand__logo" width="42" height="28" viewBox="0 0 84 56" role="img" aria-label="CK">
         <path d="M27 8c-9 0-17 8-17 20s8 20 17 20h17v-10H27c-4 0-7-4-7-10s3-10 7-10h17V8H27z" fill="var(--red)"/>
         <path d="M49 8h12l-9 16 11 24H51l-8-18-7 12h-11l12-20L49 8z" fill="var(--ink)"/>
         <path d="M45 12 34 31h8l-3 13 14-20h-8l0-12z" fill="var(--yellow)"/>
       </svg>
+
       <span class="brand__text">Селлер<span class="dot">.</span>Право</span>
     </a>
 
@@ -679,7 +105,7 @@
             <div class="price__value" id="offerPrice">от 12 000 ₽</div>
           </div>
           <div class="ctaGroup">
-            <a class="btn btn--ghost" style="color: var(--ink); background: rgba(11,15,20,.04); border-color: rgba(11,15,20,.12);" href="#pricing">Посмотреть пакеты</a>
+            <a class="btn btn--ghost btn--ghostLight" href="#pricing">Посмотреть пакеты</a>
             <a class="btn btn--primary" href="#contact">Проверить ситуацию</a>
           </div>
         </div>
@@ -773,7 +199,7 @@
         </div>
       </div>
 
-      <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+      <div class="belowLinks">
         <a class="link" href="pricing.html">Подробная матрица цен</a>
         <a class="link link--muted" href="principles.html">Принципы работы</a>
       </div>
@@ -786,7 +212,7 @@
 
       <div class="contact">
         <p class="small">
-          Это не “заявка”. Это быстрый вход в работу: вы описываете кейс, и мы отвечаем, какой документ имеет смысл делать,
+          Это быстрый вход в работу: вы описываете кейс, и мы отвечаем, какой документ имеет смысл делать,
           какой пакет подходит и что нужно для старта. Если кейс слабый, мы так и пишем.
         </p>
 
@@ -797,8 +223,8 @@
           </div>
 
           <div class="field">
-            <label for="contact">Контакт</label>
-            <input id="contact" name="contact" placeholder="@telegram или email" />
+            <label for="contactField">Контакт</label>
+            <input id="contactField" name="contact" placeholder="@telegram или email" />
           </div>
 
           <div class="field">
@@ -824,14 +250,14 @@
             </select>
           </div>
 
-          <div class="field" style="grid-column: 1 / -1;">
+          <div class="field field--wide">
             <label for="desc">Коротко по делу</label>
             <textarea id="desc" name="desc" placeholder="Что случилось, какие суммы, какие сроки и что уже сделали. Ссылки на скрины можно вставить текстом."></textarea>
           </div>
 
           <div class="form__actions">
-            <p class="small">Отправка откроет Telegram с готовым текстом (без магии и без “ботов”).</p>
-            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <p class="small">Отправка откроет Telegram с готовым текстом.</p>
+            <div class="actionsBtns">
               <button class="btn btn--primary" type="submit">Открыть Telegram</button>
               <a class="btn btn--ghost" href="https://t.me/your_channel" target="_blank" rel="noopener noreferrer">Читать блог</a>
             </div>
@@ -839,7 +265,7 @@
         </form>
       </div>
 
-      <p class="small" style="margin-top:10px;">
+      <p class="small belowNote">
         Юридическая информация и примеры: <a class="link" href="cases.html">кейсы</a>, <a class="link" href="faq.html">FAQ</a>, <a class="link" href="process.html">как устроена работа</a>.
       </p>
     </div>
@@ -848,9 +274,9 @@
 
 <footer class="footer">
   <div class="container footer__inner">
-    <div style="max-width: 56ch;">
-      <div style="font-weight:900; font-family:'Inter Tight', Inter, system-ui, sans-serif;">Селлер<span style="color:var(--red)">.</span>Право</div>
-      <p class="small" style="margin-top:8px;">
+    <div class="footer__about">
+      <div class="footer__brand">Селлер<span class="footerDot">.</span>Право</div>
+      <p class="small footer__text">
         Документы и переговоры по спорам с маркетплейсами. Без лозунгов: только предмет, сроки, риски и результат.
       </p>
     </div>
@@ -865,182 +291,6 @@
   </div>
 </footer>
 
-<script>
-  // Настройте под себя:
-  const TG_HANDLE = "your_handle"; // без @, например: sellerpravo
-  // Если вместо личного аккаунта вы используете чат/бот, замените ссылку ниже в openTelegram()
-
-  const offers = {
-    fine: {
-      badge: "Ситуация",
-      title: "Штраф или претензия площадки",
-      deliverable: "Готовый ответ или претензию под регламент площадки и ведение электронных переговоров до результата или понятного “упора”.",
-      docs: [
-        "уведомление о штрафе или претензии (скрин или письмо)",
-        "карточка товара и история изменений",
-        "переписка с поддержкой",
-        "документы по поставке и качеству (если есть)"
-      ],
-      eta: "обычно 1–3 рабочих дня до первого документа",
-      price: "от 12 000 ₽"
-    },
-    returns: {
-      badge: "Ситуация",
-      title: "Удержания, возвраты, “необоснованные списания”",
-      deliverable: "Претензия и позиция по удержаниям, электронные переговоры, подготовка пакета для возврата денег или зачёта.",
-      docs: [
-        "отчёты по удержаниям и детализация списаний",
-        "доказательства отгрузки и приемки (УПД, накладные)",
-        "переписка и решения по обращениям",
-        "скрины личного кабинета по спорным операциям"
-      ],
-      eta: "обычно 2–5 рабочих дней до первого документа",
-      price: "от 18 000 ₽"
-    },
-    card: {
-      badge: "Ситуация",
-      title: "Карточка товара, ТЗ, несоответствия, модерация",
-      deliverable: "Позиция и документы под правила площадки: ответ на претензию, корректировка формулировок, фиксация доказательств и переписка до решения.",
-      docs: [
-        "ссылка на карточку + история изменений",
-        "претензия или причина блокировки контента",
-        "фото, маркировка, инструкции, состав, характеристики",
-        "переписка с поддержкой"
-      ],
-      eta: "обычно 1–4 рабочих дня",
-      price: "от 15 000 ₽"
-    },
-    block: {
-      badge: "Ситуация",
-      title: "Блокировка товара, кабинета или ограничение продаж",
-      deliverable: "Документированная позиция и пакет для разблокировки, электронные переговоры и фиксация нарушений процедуры со стороны площадки.",
-      docs: [
-        "уведомление о блокировке и основания (скрин, письмо)",
-        "история обращений и ответы поддержки",
-        "данные по товарам и спорным операциям",
-        "документы по качеству и происхождению (если есть)"
-      ],
-      eta: "обычно 1–3 рабочих дня до первого пакета",
-      price: "от 20 000 ₽"
-    },
-    ip: {
-      badge: "Ситуация",
-      title: "Интеллектуальные права: фото, бренд, контент",
-      deliverable: "Ответ на претензию, переговоры, подготовка доказательств законности использования, при необходимости претензионный и судебный блок.",
-      docs: [
-        "претензия правообладателя или уведомление площадки",
-        "материалы карточки (фото, текст, бренд, упаковка)",
-        "договоры, лицензии, подтверждения происхождения",
-        "переписка с поддержкой и решения по жалобам"
-      ],
-      eta: "обычно 2–6 рабочих дней",
-      price: "от 25 000 ₽"
-    },
-    court: {
-      badge: "Уровень",
-      title: "Суд: иск или защита по уже поданному иску",
-      deliverable: "Иск или возражения, процессуальная логика и доказательства. Если спор можно закрыть переговорами, мы предлагаем сначала этот маршрут.",
-      docs: [
-        "иск или претензии и приложенные материалы (если есть)",
-        "договоры, документы по поставке и оплатам",
-        "переписка, отчёты, скрины кабинета",
-        "что вы хотите получить в результате (денежно и по действиям)"
-      ],
-      eta: "срок зависит от объёма материалов; первый план работ в течение 1–2 дней",
-      price: "от 55 000 ₽"
-    }
-  };
-
-  const els = {
-    chips: document.getElementById("chips"),
-    offerBadge: document.getElementById("offerBadge"),
-    offerTitle: document.getElementById("offerTitle"),
-    offerDeliverable: document.getElementById("offerDeliverable"),
-    offerDocs: document.getElementById("offerDocs"),
-    offerETA: document.getElementById("offerETA"),
-    offerPrice: document.getElementById("offerPrice"),
-    intake: document.getElementById("intake"),
-    topic: document.getElementById("topic")
-  };
-
-  function renderOffer(key){
-    const o = offers[key] || offers.fine;
-
-    els.offerBadge.textContent = o.badge;
-    els.offerTitle.textContent = o.title;
-    els.offerDeliverable.textContent = o.deliverable;
-    els.offerETA.textContent = o.eta;
-    els.offerPrice.textContent = o.price;
-
-    els.offerDocs.innerHTML = "";
-    o.docs.forEach(t => {
-      const li = document.createElement("li");
-      li.textContent = t;
-      els.offerDocs.appendChild(li);
-    });
-
-    // синхронизируем селект формы
-    if (els.topic && els.topic.value !== key) els.topic.value = key;
-  }
-
-  function setActiveChip(btn){
-    [...els.chips.querySelectorAll(".chip")].forEach(b => b.classList.remove("is-active"));
-    btn.classList.add("is-active");
-  }
-
-  // chips click
-  els.chips.addEventListener("click", (e) => {
-    const btn = e.target.closest(".chip");
-    if (!btn) return;
-    const key = btn.dataset.key;
-    setActiveChip(btn);
-    renderOffer(key);
-  });
-
-  // select change
-  els.topic.addEventListener("change", () => {
-    const key = els.topic.value;
-    const btn = els.chips.querySelector(`.chip[data-key="${key}"]`);
-    if (btn) setActiveChip(btn);
-    renderOffer(key);
-  });
-
-  function openTelegram(text){
-    // tg:// может не работать на десктопе в браузере, поэтому используем https
-    const url = "https://t.me/" + TG_HANDLE + "?text=" + encodeURIComponent(text);
-    window.open(url, "_blank", "noopener,noreferrer");
-  }
-
-  // form submit
-  els.intake.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const name = document.getElementById("name").value.trim();
-    const contact = document.getElementById("contact").value.trim();
-    const marketplace = document.getElementById("marketplace").value.trim();
-    const topicKey = document.getElementById("topic").value;
-    const desc = document.getElementById("desc").value.trim();
-
-    const o = offers[topicKey] || offers.fine;
-
-    const msg =
-`Селлер.Право — запрос
-
-Имя: ${name || "—"}
-Контакт: ${contact || "—"}
-Площадка: ${marketplace || "—"}
-Ситуация: ${o.title}
-
-Описание:
-${desc || "—"}
-
-Если удобно, могу прикрепить скрины и документы ссылками.`;
-
-    openTelegram(msg);
-  });
-
-  // init
-  renderOffer("fine");
-</script>
+<script src="script.js" defer></script>
 </body>
 </html>

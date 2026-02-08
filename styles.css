@@ -596,24 +596,43 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   align-items:center;
 }
 
-/* DEBUG: показывает, что браузер считает шириной экрана */
-body::after{
-  content: "viewport: DESKTOP";
-  position: fixed;
-  right: 10px;
-  bottom: 10px;
-  z-index: 9999;
-  padding: 8px 10px;
-  border-radius: 999px;
-  background: rgba(255,196,0,.92);
-  color: #0b0f14;
-  font-weight: 900;
-  font-size: 12px;
-  border: 1px solid rgba(11,15,20,.18);
+/* Чтобы элементы в flex могли ужиматься, а не распирать экран */
+.header__inner, .brand, .header__actions { min-width: 0; }
+
+/* Мобильная шапка: переносим кнопку на вторую строку и не режем экран */
+@media (max-width: 520px){
+  .header__inner{
+    flex-wrap: wrap;
+    row-gap: 10px;
+  }
+
+  .header__actions{
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  /* Чтобы название бренда не распирало шапку */
+  .brand__text{
+    display: block;
+    max-width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .btn{ padding: 10px 12px; }
 }
-@media (max-width: 700px){
-  body::after{ content: "viewport: MOBILE"; }
+
+/* На совсем узких экранах укорачиваем ещё сильнее */
+@media (max-width: 380px){
+  .brand__text{ max-width: 120px; }
 }
+
+/* Экстремально узкие телефоны: оставляем только знак и кнопку */
+@media (max-width: 340px){
+  .brand__text{ display: none; }
+}
+
 
 /* Мобильная шапка: убираем лишнее, чтобы не распирало ширину */
 @media (max-width: 520px){
@@ -621,5 +640,5 @@ body::after{
   .brand__text{ font-size: 16px; }
   .container{ width: min(var(--max), calc(100% - 24px)); } /* чуть меньше боковые поля */
 }
-html, body{ overflow-x: hidden; }
+
 

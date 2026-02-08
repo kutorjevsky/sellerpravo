@@ -4,24 +4,20 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Селлер.Право — юридический сервис для продавцов маркетплейсов. Штрафы, удержания, блокировки, претензии по товарным знакам, возвраты, неисполнение." />
+  <meta name="description" content="Селлер.Право — юридический сервис для продавцов маркетплейсов: штрафы, удержания, блокировки, товарные знаки, логистика, убытки." />
   <title>Селлер.Право — юридический сервис для селлеров маркетплейсов</title>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-  <!-- Header (dark only here) -->
-  <header class="header">
+  <header class="header" id="top">
     <div class="container header__inner">
       <a class="brand" href="#top" aria-label="Селлер.Право — на главную">
-        <!-- Replace this SVG with your real logo if you want: assets/logo.svg -->
-        <!-- <img src="assets/logo.svg" alt="Селлер.Право" class="brand__logo" /> -->
         <svg class="brand__logo" width="42" height="28" viewBox="0 0 84 56" role="img" aria-label="CK">
           <path d="M27 8c-9 0-17 8-17 20s8 20 17 20h17v-10H27c-4 0-7-4-7-10s3-10 7-10h17V8H27z" fill="var(--red)"/>
           <path d="M49 8h12l-9 16 11 24H51l-8-18-7 12h-11l12-20L49 8z" fill="var(--ink)"/>
@@ -31,438 +27,181 @@
       </a>
 
       <nav class="nav" aria-label="Навигация">
-        <a class="nav__link" href="#problems">Ситуации</a>
-        <a class="nav__link" href="#cases">Полезное для селлера</a>
+        <a class="nav__link" href="#diagnostic">Проблемы</a>
+        <a class="nav__link" href="#pricing">Цены</a>
+        <a class="nav__link" href="#tg">Telegram-блог</a>
       </nav>
 
       <div class="header__actions">
         <a class="btn btn--ghost" href="#pricing">Посмотреть цены</a>
-        <a class="btn btn--primary" href="#contact">Получить консультацию</a>
+        <a class="btn btn--primary" href="#contact">Получить план</a>
       </div>
     </div>
   </header>
 
-  <main id="top">
-    <!-- Hero / Diagnostic panel -->
-    <section class="hero">
+  <main>
+    <section class="hero" aria-label="Первый экран">
       <div class="container hero__grid">
         <div class="hero__left">
-          
           <h1 class="h1">
             Юридическая помощь продавцам маркетплейсов:
-            <span class="accent">штрафы</span>, <span class="accent">удержания</span>, <span class="accent">блокировки</span>, <span class="accent">товарные знаки</span>.
+            <span class="accent">штрафы</span>, <span class="accent">удержания</span>, <span class="accent">блокировки</span>, <span class="accent">товарные знаки</span>, <span class="accent">логистика</span>.
           </h1>
 
           <p class="lead">
-            Проводим консултации, претензионную и судебную работу с маркетплейсами. Выберите вашу проблему и мы предложим вам алгоритм действий.
+            Мы разбираем ситуацию по документам и регламентам площадки, фиксируем доказательства и делаем юридическое действие,
+            которое реально можно использовать: претензию, переписку, иск, возражения или обжалование.
           </p>
 
-          <div class="diagnostic">
+          <section class="diagnostic" id="diagnostic" aria-label="Подбор пакета">
             <div class="diagnostic__header">
-              <h2 class="h2">Выберите ситуацию</h2>
-              <p class="sub">Чтобы вы понимали, что именно вам предлагают, ещё до созвона.</p>
+              <h2 class="h2">Выберите проблему</h2>
+              <p class="sub">Мы покажем, что можем предложить по каждой ситуации.</p>
             </div>
 
-            <div class="chips" role="list" aria-label="Ситуации">
-              <button class="chip is-active" data-scenario="penalties" role="listitem" type="button">Штрафы и претензии площадки</button>
-              <button class="chip" data-scenario="holds" role="listitem" type="button">Удержания и взаиморасчёты</button>
-              <button class="chip" data-scenario="blocks" role="listitem" type="button">Блокировка кабинета или карточек</button>
-              <button class="chip" data-scenario="returns" role="listitem" type="button">Возвраты, подмены, споры</button>
-              <button class="chip" data-scenario="tm" role="listitem" type="button">Товарные знаки и контент</button>
-              <button class="chip" data-scenario="supply" role="listitem" type="button">Поставщик, логистика, неисполнение</button>
+            <div class="chips" role="list" aria-label="Проблемы">
+              <button class="chip is-active" data-problem="penalty" role="listitem" type="button">Штраф от маркетплейса</button>
+              <button class="chip" data-problem="holds" role="listitem" type="button">Неправильные удержания и взаиморасчеты</button>
+              <button class="chip" data-problem="tm" role="listitem" type="button">Товарные знаки и контент</button>
+              <button class="chip" data-problem="blocks" role="listitem" type="button">Блокировка кабинета и карточек</button>
+              <button class="chip" data-problem="loss" role="listitem" type="button">Утеря и утилизация товара</button>
+              <button class="chip" data-problem="damages" role="listitem" type="button">Убытки по вине маркетплейса</button>
+              <button class="chip" data-problem="logistics" role="listitem" type="button">Проблемы с логистикой</button>
             </div>
 
             <div class="diagnostic__footer">
-              <a class="btn btn--primary" href="#contact" id="primaryCta">Получить план действий</a>
-              <a class="btn btn--ghost" href="#process">Сначала посмотреть процесс</a>
+              <button class="btn btn--primary" id="planBtn" type="button">Получить план</button>
             </div>
-          </div>
+
+            <div class="stage" id="stageBlock" aria-live="polite">
+              <div class="stage__head">
+                <h3 class="h3">Где сейчас дело</h3>
+                <p class="sub">Нам важно понимать стадию, потому что набор документов и тактика различаются.</p>
+              </div>
+
+              <div class="stage__options" role="group" aria-label="Стадия">
+                <button class="stageBtn" data-stage="pretrial" type="button" aria-pressed="false">Досудебное урегулирование</button>
+                <button class="stageBtn" data-stage="in_court" type="button" aria-pressed="false">Дело уже в суде</button>
+                <button class="stageBtn" data-stage="post_judgment" type="button" aria-pressed="false">Суд уже был, я не согласен с решением</button>
+              </div>
+
+              <noscript>
+                <p class="fine">
+                  Скрипты отключены. Тогда просто напишите проблему и стадию в обращении ниже, мы всё равно разберёмся.
+                </p>
+              </noscript>
+            </div>
+          </section>
         </div>
 
-        <aside class="hero__right" aria-label="Спецификация услуги">
+        <aside class="hero__right" aria-label="Подходящие пакеты">
           <div class="spec">
             <div class="spec__top">
               <div class="spec__badge">
                 <span class="bolt" aria-hidden="true">⚡</span>
-                <span id="specTitle">Штрафы и претензии площадки</span>
+                <span id="specTitle">Штраф от маркетплейса</span>
               </div>
-              <div class="spec__note" id="specNote">Покажем, где маркетплейс правда перегибает. Делаем документы</div>
+              <div class="spec__note" id="specNote">
+                Выберите проблему, нажмите «Получить план», затем укажите стадию. Справа появятся подходящие пакеты с составом работ и диапазоном цены.
+              </div>
             </div>
 
-            <div class="spec__grid">
-              <div class="spec__item">
-                <div class="spec__label">Первый шаг</div>
-                <div class="spec__value" id="specStep">Формируем позицию, готовим и отправляем ответ или претензию в адрес площадки и запускаем переговоры в электронном виде</div>
-              </div>
-
-              <div class="spec__grid">
-              <div class="spec__item">
-                <div class="spec__label">Что дальше</div>
-                <div class="spec__value" id="specStep">Переговоры и переписка с маркетплейсом, затем при необходимости иск или возражения на иск, если маркетплейс обратится сам.</div>
-              </div>
-
-              <div class="spec__item">
-                <div class="spec__label">Нужно от вас</div>
-                <ul class="spec__list" id="specNeed">
-                  <li>описание ситуации</li>
-                  <li>скрин/уведомление о штрафе или претензии</li>
-                  <li>карточка товара и история изменений</li>
-                  <li>переписка с поддержкой</li>
-                  <li>дополнительные документы по нашему запросу</li>
-                </ul>
-              </div>
-
-              <div class="spec__item">
-                <div class="spec__label">Срок</div>
-                <div class="spec__value" id="specTime">обычно 1–3 рабочих дня на подготовку документов</div>
-              </div>
-
-              <div class="spec__item">
-                <div class="spec__label">Ориентир бюджета</div>
-                <div class="spec__value" id="specBudget">от 10 000 ₽</div>
-                <div class="fine">
-                Стоимость зависит от объема материала. Фиксируем стоимость до старта работ. Если спор явно не стоит денег, мы скажем это сразу и предложим более короткий маршрут.
-              </div>
+            <div class="spec__body" id="specBody">
+              <div class="hint">
+                <div class="hint__title">Что будет дальше</div>
+                <div class="hint__text">
+                  Мы предложим конкретный пакет работ. Внутри пакета будет понятный артефакт: текст претензии или ответа, пакет приложений,
+                  рамка переписки и, если нужно, процессуальные документы.
+                </div>
               </div>
             </div>
 
             <div class="spec__bottom">
-              <div class="fine">
-                Мы не обещаем однозначного решения в вопроса в вашу пользу, но обещаем продуманную юридическую стратегию.
-              </div>
+              <a class="btn btn--ghost btn--full" href="#contact">Перейти к обращению</a>
+              <p class="fine fine--center">
+                Никаких таймеров, автозвонков и прочей мелкой цифровой токсичности. Мы отвечаем по делу.
+              </p>
             </div>
           </div>
         </aside>
       </div>
     </section>
 
-    <!-- Problems / services cards -->
-    <section class="section" id="problems">
-      <div class="container">
-        <div class="section__head">
-          <h2 class="h2">С чем мы работаем</h2>
-          <p class="sub">Формулируем результат заранее: что считается успехом и что вы получите на выходе.</p>
-        </div>
-
-        <div class="grid3">
-          <article class="card">
-            <div class="card__top">
-              <span class="pill pill--yellow">Деньги</span>
-              <h3 class="h3">Удержания и списания</h3>
-            </div>
-            <p class="card__text">Разбор взаиморасчётов, возврат удержаний, претензии, подготовка позиции для суда.</p>
-            <div class="card__meta">
-              <span class="meta">Выход: расчёт, претензия, пакет доказательств</span>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card__top">
-              <span class="pill pill--red">Риск</span>
-              <h3 class="h3">Блокировки</h3>
-            </div>
-            <p class="card__text">Оспаривание блокировок карточек и кабинета, восстановление доступа, фиксация нарушений.</p>
-            <div class="card__meta">
-              <span class="meta">Выход: обращения, доказательства, стратегия</span>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card__top">
-              <span class="pill pill--yellow">Контент</span>
-              <h3 class="h3">Товарные знаки и изображения</h3>
-            </div>
-            <p class="card__text">Претензии правообладателей, контрафакт, контентные блокировки, ответ на претензию.</p>
-            <div class="card__meta">
-              <span class="meta">Выход: правовая позиция, ответ, переговорный пакет</span>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card__top">
-              <span class="pill pill--red">Споры</span>
-              <h3 class="h3">Возвраты и подмены</h3>
-            </div>
-            <p class="card__text">Споры по возвратам, подменам, недостачам, актирование и доказательства.</p>
-            <div class="card__meta">
-              <span class="meta">Выход: акты, претензии, позиция под регламент</span>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card__top">
-              <span class="pill pill--yellow">Договоры</span>
-              <h3 class="h3">Поставщик и логистика</h3>
-            </div>
-            <p class="card__text">Неисполнение, брак, срыв сроков, взыскание убытков, досудебка, суд.</p>
-            <div class="card__meta">
-              <span class="meta">Выход: претензия, расчёт, исковая конструкция</span>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card__top">
-              <span class="pill pill--red">Уголовное</span>
-              <h3 class="h3">Оценка уголовных рисков</h3>
-            </div>
-            <p class="card__text">Квалификация ситуации, заявление, сопровождение, защита интересов.</p>
-            <div class="card__meta">
-              <span class="meta">Выход: правовая оценка и план действий</span>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Transparency rules -->
-    <section class="section section--paper" id="transparency">
-      <div class="container">
-        <div class="section__head">
-          <h2 class="h2">Прозрачные правила работы</h2>
-          <p class="sub">Мы не маскируем ограничения. Это экономит вам время и деньги.</p>
-        </div>
-
-        <div class="rules">
-          <div class="rules__col">
-            <div class="rules__title"><span class="mark mark--yellow">Делаем</span></div>
-            <ul class="rules__list">
-              <li>Оцениваем перспективу по документам и регламенту площадки, а не по эмоциям.</li>
-              <li>Фиксируем доказательства так, чтобы их можно было использовать и в суде, и в переписке с площадкой.</li>
-              <li>Формулируем результат как артефакт: позиция, претензия, пакет, исковые документы.</li>
-              <li>Даём диапазон стоимости до старта и объясняем, что именно в него входит.</li>
-            </ul>
-          </div>
-
-          <div class="rules__col">
-            <div class="rules__title"><span class="mark mark--red">Не обещаем</span></div>
-            <ul class="rules__list">
-              <li>«Гарантию решения площадки». Мы не управляем их модерацией, но управляем качеством вашей позиции.</li>
-              <li>«Сделаем за час» без документов. Быстро делается только то, что заранее подготовлено.</li>
-              <li>«Подпишитесь, а потом разберёмся». Сначала рамка, затем работа.</li>
-              <li>Тёмные паттерны: таймеры, липкие окна, автозвонки. Это плохо выглядит и редко работает на умных людей.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Process -->
-    <section class="section" id="process">
-      <div class="container">
-        <div class="section__head">
-          <h2 class="h2">Процесс: по шагам и по результатам</h2>
-          <p class="sub">Чтобы вы понимали, за что платите и что получите на каждом этапе.</p>
-        </div>
-
-        <ol class="steps">
-          <li class="step">
-            <div class="step__num"><span class="bolt">⚡</span>1</div>
-            <div class="step__body">
-              <div class="step__title">Диагностика</div>
-              <div class="step__text">Собираем факты и документы. Фиксируем точки риска и развилки.</div>
-              <div class="artifact">Артефакт: план действий + список недостающих доказательств</div>
-            </div>
-          </li>
-
-          <li class="step">
-            <div class="step__num"><span class="bolt">⚡</span>2</div>
-            <div class="step__body">
-              <div class="step__title">Позиция</div>
-              <div class="step__text">Формулируем юридическую конструкцию под ваш сценарий: площадка, контрагент, суд.</div>
-              <div class="artifact">Артефакт: письменная позиция (черновик и финальная версия)</div>
-            </div>
-          </li>
-
-          <li class="step">
-            <div class="step__num"><span class="bolt">⚡</span>3</div>
-            <div class="step__body">
-              <div class="step__title">Досудебка</div>
-              <div class="step__text">Претензии, переговоры, обращения в поддержку, фиксация ответов.</div>
-              <div class="artifact">Артефакт: претензия + пакет приложений + переговорная рамка</div>
-            </div>
-          </li>
-
-          <li class="step">
-            <div class="step__num"><span class="bolt">⚡</span>4</div>
-            <div class="step__body">
-              <div class="step__title">Суд</div>
-              <div class="step__text">Если без суда нельзя: иск, обеспечительные меры, доказательства, стратегия.</div>
-              <div class="artifact">Артефакт: комплект процессуальных документов</div>
-            </div>
-          </li>
-
-          <li class="step">
-            <div class="step__num"><span class="bolt">⚡</span>5</div>
-            <div class="step__body">
-              <div class="step__title">Контроль исполнения</div>
-              <div class="step__text">Исполнение решения, возврат средств, контроль сроков и обязательств.</div>
-              <div class="artifact">Артефакт: дорожная карта исполнения + контрольные точки</div>
-            </div>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- Pricing -->
-    <section class="section section--paper" id="pricing">
+    <section class="section section--paper" id="pricing" aria-label="Цены">
       <div class="container">
         <div class="section__head">
           <h2 class="h2">Цены без тумана</h2>
-          <p class="sub">Диапазон зависит от объёма материалов и срочности. Состав работ фиксируем до старта.</p>
+          <p class="sub">Диапазон зависит от объёма материала и срочности. Состав работ фиксируем до старта.</p>
         </div>
 
         <div class="grid3">
-          <div class="price">
+          <article class="price">
             <div class="price__head">
-              <span class="pill pill--yellow">Старт</span>
-              <h3 class="h3">Оценка перспективы</h3>
-              <div class="price__sum">15 000 – 35 000 ₽</div>
+              <span class="pill pill--yellow">Досудебка</span>
+              <h3 class="h3">Быстрый старт</h3>
+              <div class="price__sum">6 000 – 10 000 ₽</div>
             </div>
-            <ul class="price__list">
-              <li>Разбор ситуации и документов</li>
-              <li>Позиция и развилки</li>
-              <li>Список доказательств</li>
-            </ul>
-            <div class="price__no">Не включено: переписка и претензии</div>
-            <a class="btn btn--primary btn--full" href="#contact">Загрузить материалы</a>
-          </div>
+            <p class="price__text">Правовой анализ, подготовка претензии или ответа на уведомление, устная консультация.</p>
+          </article>
 
-          <div class="price">
+          <article class="price">
             <div class="price__head">
-              <span class="pill pill--red">Досудебка</span>
-              <h3 class="h3">Претензия + пакет</h3>
-              <div class="price__sum">35 000 – 120 000 ₽</div>
+              <span class="pill pill--red">Переговоры</span>
+              <h3 class="h3">С перепиской</h3>
+              <div class="price__sum">10 000 – 15 000 ₽</div>
             </div>
-            <ul class="price__list">
-              <li>Претензия и расчёты</li>
-              <li>Пакет приложений</li>
-              <li>Переговорная рамка</li>
-            </ul>
-            <div class="price__no">Не включено: суд</div>
-            <a class="btn btn--primary btn--full" href="#contact">Получить план</a>
-          </div>
+            <p class="price__text">То же самое плюс переговоры по электронной почте и ведение переписки по рамке.</p>
+          </article>
 
-          <div class="price">
+          <article class="price">
             <div class="price__head">
               <span class="pill pill--yellow">Суд</span>
-              <h3 class="h3">Судебный пакет</h3>
-              <div class="price__sum">120 000 ₽ +</div>
+              <h3 class="h3">Документы и участие</h3>
+              <div class="price__sum">от 15 000 ₽</div>
             </div>
-            <ul class="price__list">
-              <li>Иск и доказательства</li>
-              <li>Обеспечительные меры</li>
-              <li>Тактика по инстанциям</li>
-            </ul>
-            <div class="price__no">Не включено: госпошлины и расходы</div>
-            <a class="btn btn--primary btn--full" href="#contact">Обсудить рамку</a>
-          </div>
+            <p class="price__text">Иск или возражения, упрощённое производство, участие в заседании, обжалование.</p>
+          </article>
         </div>
 
         <div class="fine fine--wide">
-          Если вы хотите фиксированную цену, это решается: мы описываем объём работ и границы, после чего фиксируем стоимость договором.
+          Если вам нужна фиксированная цена, это решается скучно и надёжно: мы описываем объём работ и границы, после чего закрепляем стоимость договором.
         </div>
       </div>
     </section>
 
-    <!-- Cases -->
-    <section class="section" id="cases">
+    <section class="section" id="tg" aria-label="Telegram-блог">
       <div class="container">
         <div class="section__head">
-          <h2 class="h2">Кейсы без маркетинговых сказок</h2>
-          <p class="sub">Ситуация → риск → действия → результат → срок.</p>
+          <h2 class="h2">Telegram-блог для селлеров</h2>
+          <p class="sub">Короткие разборы штрафов, удержаний, блокировок и товарных знаков, без инфобизнеса и философии о предназначении бренда.</p>
         </div>
 
-        <div class="grid2">
-          <article class="case">
-            <div class="case__tags">
-              <span class="pill pill--red">Риск</span>
-              <span class="pill">Удержания</span>
-            </div>
-            <h3 class="h3">Удержали выплаты по взаиморасчётам</h3>
-            <p class="case__row"><b>Риск:</b> потери денег без понятного основания.</p>
-            <p class="case__row"><b>Действия:</b> расчёт, претензия, доказательства, переговорный пакет.</p>
-            <p class="case__row"><b>Результат:</b> частичный возврат, фиксация позиции для суда.</p>
-            <p class="case__row"><b>Срок:</b> 10–14 дней.</p>
-          </article>
-
-          <article class="case">
-            <div class="case__tags">
-              <span class="pill pill--yellow">Контент</span>
-              <span class="pill">ТЗ</span>
-            </div>
-            <h3 class="h3">Претензия правообладателя по товарному знаку</h3>
-            <p class="case__row"><b>Риск:</b> блокировка карточки и требования компенсации.</p>
-            <p class="case__row"><b>Действия:</b> анализ основания, ответ, переговорная рамка, корректировка контента.</p>
-            <p class="case__row"><b>Результат:</b> снятие части требований, согласование условий.</p>
-            <p class="case__row"><b>Срок:</b> 5–12 дней.</p>
-          </article>
+        <div class="card card--flat">
+          <p class="card__text">
+            Тут должна быть ссылка на ваш Telegram. Вставьте её вместо заглушки.
+          </p>
+          <a class="btn btn--primary" href="https://t.me/your_channel" target="_blank" rel="noopener noreferrer">Открыть Telegram</a>
         </div>
       </div>
     </section>
 
-    <!-- FAQ -->
-    <section class="section section--paper" id="faq">
-      <div class="container">
-        <div class="section__head">
-          <h2 class="h2">FAQ</h2>
-          <p class="sub">Вопросы, которые нормальный человек задаёт до оплаты.</p>
-        </div>
-
-        <div class="faq">
-          <details class="faq__item" open>
-            <summary class="faq__q">Почему вы не гарантируете результат?</summary>
-            <div class="faq__a">
-              Потому что часть решений принимают площадка и суд. Мы гарантируем качество юридической позиции, доказательственный пакет,
-              и честную оценку перспективы до того, как вы потратите деньги на бессмысленную борьбу.
-            </div>
-          </details>
-
-          <details class="faq__item">
-            <summary class="faq__q">Что нужно подготовить, чтобы всё было быстрее и дешевле?</summary>
-            <div class="faq__a">
-              Минимум: уведомления, переписка, карточка товара, история изменений, документы по поставке и оплатам, скриншоты спорных действий площадки.
-              Чем меньше “вспоминаем на словах”, тем меньше лишней работы.
-            </div>
-          </details>
-
-          <details class="faq__item">
-            <summary class="faq__q">Вы работаете только по Москве?</summary>
-            <div class="faq__a">
-              Москва и область в приоритете, но по большинству задач работа удалённая. Судебные вопросы решаются по подсудности и формату участия.
-            </div>
-          </details>
-
-          <details class="faq__item">
-            <summary class="faq__q">Как выглядит старт работы?</summary>
-            <div class="faq__a">
-              Вы отправляете материалы. Мы возвращаемся с планом действий: что делаем, что нужно от вас, сроки и цена. После согласования фиксируем объём работ.
-            </div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="section" id="contact">
+    <section class="section section--paper" id="contact" aria-label="Контакты">
       <div class="container">
         <div class="contact">
           <div class="contact__left">
-            <h2 class="h2">Проверить ситуацию</h2>
+            <h2 class="h2">Отправить материалы</h2>
             <p class="sub">
-              Оставьте контакт и коротко опишите проблему. Если у вас уже есть документы, прикрепите ссылку на облако.
-              Мы ответим с планом действий и рамкой стоимости.
+              Опишите проблему и стадию. Если документы уже лежат в облаке, дайте ссылку. Мы вернёмся с планом действий и рамкой стоимости.
             </p>
 
             <div class="contact__meta">
               <div class="metaRow"><span class="metaKey">Формат</span><span class="metaVal">удалённо, по документам</span></div>
               <div class="metaRow"><span class="metaKey">Ответ</span><span class="metaVal">обычно в течение 1 рабочего дня</span></div>
-              <div class="metaRow"><span class="metaKey">Принцип</span><span class="metaVal">никаких автозвонков и спама</span></div>
+              <div class="metaRow"><span class="metaKey">Принцип</span><span class="metaVal">без спама и автозвонков</span></div>
             </div>
           </div>
 
           <div class="contact__right">
-            <!-- Static hosting cannot send email itself. Use mailto or a form provider. -->
-            <!-- Easiest: mailto (works, but without attachments). -->
             <form class="form" action="mailto:you@example.com" method="post" enctype="text/plain">
               <label class="field">
                 <span class="field__label">Имя</span>
@@ -475,8 +214,8 @@
               </label>
 
               <label class="field">
-                <span class="field__label">Что случилось</span>
-                <textarea class="input input--area" name="message" rows="6" placeholder="Коротко: площадка, что произошло, суммы, сроки, что уже сделали"></textarea>
+                <span class="field__label">Коротко о ситуации</span>
+                <textarea class="input input--area" name="message" rows="7" placeholder="Площадка, что произошло, суммы, сроки, что уже сделали, ссылки на документы"></textarea>
               </label>
 
               <label class="field field--check">
@@ -487,7 +226,7 @@
               <button class="btn btn--primary btn--full" type="submit">Отправить</button>
 
               <p class="fine fine--center">
-                Замените <b>you@example.com</b> на ваш email. Если хотите нормальную форму без mailto, подключите Formspree или Netlify Forms.
+                Для нормальной формы без mailto подключите Formspree или Netlify Forms и замените action.
               </p>
             </form>
           </div>
@@ -496,14 +235,14 @@
     </section>
   </main>
 
-  <footer class="footer">
+  <footer class="footer" aria-label="Подвал">
     <div class="container footer__inner">
       <div class="footer__left">
         <div class="footer__brand">Селлер<span class="dot">.</span>Право</div>
         <div class="footer__muted">Юридический сервис для продавцов маркетплейсов.</div>
       </div>
       <div class="footer__right">
-        <a class="footer__link" href="#transparency">Правила</a>
+        <a class="footer__link" href="#diagnostic">Проблемы</a>
         <a class="footer__link" href="#pricing">Цены</a>
         <a class="footer__link" href="#contact">Контакты</a>
       </div>
@@ -513,5 +252,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
-

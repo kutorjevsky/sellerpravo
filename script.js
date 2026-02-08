@@ -1,365 +1,168 @@
-// script.js
-(() => {
-  const problems = [
-    {
-      key: "penalty",
-      label: "Штраф от маркетплейса",
-      note: "Когда площадка списала деньги или выставила претензию: мы проверяем регламент, доказательства и собираем позицию так, чтобы она пережила поддержку и суд."
-    },
-    {
-      key: "holds",
-      label: "Неправильные удержания и взаиморасчеты",
-      note: "Если цифры не сходятся: разбираем отчёты, сверяем основания удержаний, готовим претензию и переговорную рамку."
-    },
-    {
-      key: "tm",
-      label: "Товарные знаки и контент",
-      note: "Если прилетела претензия правообладателя или блокировка контента: оцениваем риски, делаем ответ и, при необходимости, переговоры с правообладателем."
-    },
-    {
-      key: "blocks",
-      label: "Блокировка кабинета и карточек",
-      note: "Если заблокировали карточки или кабинет: фиксируем нарушение, формируем пакет обращений и позицию для восстановления доступа."
-    },
-    {
-      key: "loss",
-      label: "Утеря и утилизация товара",
-      note: "Если товар потеряли или утилизировали: собираем доказательства, считаем ущерб, выстраиваем претензию и дальнейшую тактику."
-    },
-    {
-      key: "damages",
-      label: "Убытки по вине маркетплейса",
-      note: "Когда из-за действий площадки возникли потери: формируем доказательственную конструкцию и считаем убытки так, чтобы это не выглядело фантазией."
-    },
-    {
-      key: "logistics",
-      label: "Проблемы с логистикой",
-      note: "Срывы сроков, неисполнение, повреждение: квалификация ситуации, претензия, расчёты, подготовка к суду при необходимости."
-    }
-  ];
+// Настройте под себя:
+const TG_HANDLE = "your_handle"; // без @, например: sellerpravo
 
-  const packages = {
-    pretrial_now: (problemKey) => {
-      const base = [
-        {
-          name: "Пакет «Досудебка»",
-          price: "6 000 – 10 000 ₽",
-          includes: [
-            "правовой анализ ситуации",
-            "подготовка претензии или ответа на уведомление",
-            "подготовка претензии",
-            "устная консультация"
-          ],
-          meta: "Подходит, когда нужно быстро зафиксировать позицию и начать движение."
-        },
-        {
-          name: "Пакет «Переговоры»",
-          price: "10 000 – 15 000 ₽",
-          includes: [
-            "правовой анализ ситуации",
-            "подготовка претензии или ответа на уведомление",
-            "подготовка претензии",
-            "устная консультация",
-            "переговоры по электронной почте"
-          ],
-          meta: "Подходит, когда без переписки и контроля ответов всё развалится."
-        }
-      ];
-
-      if (problemKey === "tm") {
-        base.unshift({
-          name: "Пакет «Товарный знак»",
-          price: "15 000 – 20 000 ₽",
-          includes: [
-            "правовой анализ",
-            "подготовка претензии или ответа на уведомление",
-            "подготовка претензии",
-            "устная консультация с правообладателем",
-            "устные и личные переговоры с правообладателем"
-          ],
-          meta: "Подходит для ситуаций с правообладателем, где важны формулировки и тон переговоров."
-        });
-      }
-
-      return base;
-    },
-
-    pretrial_next: () => ([
-      {
-        name: "Пакет «Документы для суда»",
-        price: "15 000 – 25 000 ₽",
-        includes: [
-          "подготовка иска или возражений"
-        ],
-        meta: "Если договориться не получится или если на вас подали в суд."
-      },
-      {
-        name: "Пакет «Упрощенка»",
-        price: "25 000 – 35 000 ₽",
-        includes: [
-          "сопровождение упрощённого производства",
-          "составление процессуальных документов"
-        ],
-        meta: "Если дело в упрощённом порядке и важно не проиграть его «по переписке»."
-      },
-      {
-        name: "Пакет «Суд»",
-        price: "45 000 – 70 000 ₽",
-        includes: [
-          "участие в суде первой инстанции"
-        ],
-        meta: "Если нужна очная защита и контроль процессуальной динамики."
-      },
-      {
-        name: "Пакет «Иск + суд»",
-        price: "50 000 – 80 000 ₽",
-        includes: [
-          "подготовка иска",
-          "участие в суде первой инстанции"
-        ],
-        meta: "Нормальный вариант, когда нужен комплект, а не разрозненные действия."
-      },
-      {
-        name: "Пакет «Досудебка + упрощенка»",
-        price: "30 000 – 40 000 ₽",
-        includes: [
-          "досудебная работа",
-          "сопровождение упрощённого производства"
-        ],
-        meta: "Если вы хотите сначала попробовать досудебно, но держать суд в фокусе."
-      },
-      {
-        name: "Пакет «Досудебка + весь суд»",
-        price: "60 000 – 90 000 ₽",
-        includes: [
-          "досудебная работа",
-          "ведение дела в суде первой инстанции",
-          "подготовка процессуальных документов по ходу дела"
-        ],
-        meta: "Если спор потенциально «длинный» и вы хотите одну линию защиты."
-      },
-      {
-        name: "Пакет «Максимум»",
-        price: "100 000 – 150 000 ₽",
-        includes: [
-          "досудебная работа",
-          "ведение дела во всех трёх инстанциях"
-        ],
-        meta: "Если вы заранее понимаете, что вопрос принципиальный и будет тяжёлым."
-      }
-    ]),
-
-    in_court: () => ([
-      {
-        name: "Пакет «Документы для суда»",
-        price: "15 000 – 25 000 ₽",
-        includes: [
-          "подготовка иска или возражений"
-        ],
-        meta: "Если сейчас горит именно документ: иск, отзыв, возражения, пояснения."
-      },
-      {
-        name: "Пакет «Упрощенка»",
-        price: "25 000 – 35 000 ₽",
-        includes: [
-          "сопровождение упрощённого производства",
-          "составление процессуальных документов"
-        ],
-        meta: "Если суд идёт в упрощённом порядке и нельзя пропускать сроки."
-      },
-      {
-        name: "Пакет «Суд»",
-        price: "45 000 – 70 000 ₽",
-        includes: [
-          "участие в суде первой инстанции"
-        ],
-        meta: "Если нужна процессуальная защита и управление ходом заседаний."
-      },
-      {
-        name: "Пакет «Иск + суд»",
-        price: "50 000 – 80 000 ₽",
-        includes: [
-          "подготовка иска",
-          "участие в суде первой инстанции"
-        ],
-        meta: "Если вы ещё можете повлиять на конструкцию дела и её подачу."
-      }
-    ]),
-
-    post_judgment: () => ([
-      {
-        name: "Пакет «Обжалование»",
-        price: "30 000 – 40 000 ₽",
-        includes: [
-          "участие в суде апелляционной и кассационной инстанции"
-        ],
-        meta: "Если вы не согласны с решением и хотите нормальную правовую атаку, а не крик души на 40 страниц."
-      }
-    ])
-  };
-
-  const els = {
-    chips: Array.from(document.querySelectorAll(".chip")),
-    planBtn: document.getElementById("planBtn"),
-    stageBlock: document.getElementById("stageBlock"),
-    stageBtns: Array.from(document.querySelectorAll(".stageBtn")),
-    specTitle: document.getElementById("specTitle"),
-    specNote: document.getElementById("specNote"),
-    specBody: document.getElementById("specBody")
-  };
-
-  const state = {
-    problem: "penalty",
-    planOpened: false,
-    stage: null
-  };
-
-  function getProblem() {
-    return problems.find(p => p.key === state.problem) || problems[0];
+const offers = {
+  fine: {
+    badge: "Ситуация",
+    title: "Штраф или претензия площадки",
+    deliverable: "Готовый ответ или претензию под регламент площадки и ведение электронных переговоров до результата или понятного “упора”.",
+    docs: [
+      "уведомление о штрафе или претензии (скрин или письмо)",
+      "карточка товара и история изменений",
+      "переписка с поддержкой",
+      "документы по поставке и качеству (если есть)"
+    ],
+    eta: "обычно 1–3 рабочих дня до первого документа",
+    price: "от 12 000 ₽"
+  },
+  returns: {
+    badge: "Ситуация",
+    title: "Удержания, возвраты, необоснованные списания",
+    deliverable: "Претензия и позиция по удержаниям, электронные переговоры, подготовка пакета для возврата денег или зачёта.",
+    docs: [
+      "отчёты по удержаниям и детализация списаний",
+      "доказательства отгрузки и приемки (УПД, накладные)",
+      "переписка и решения по обращениям",
+      "скрины личного кабинета по спорным операциям"
+    ],
+    eta: "обычно 2–5 рабочих дней до первого документа",
+    price: "от 18 000 ₽"
+  },
+  card: {
+    badge: "Ситуация",
+    title: "Карточка товара, ТЗ, несоответствия, модерация",
+    deliverable: "Позиция и документы под правила площадки: ответ на претензию, корректировка формулировок, фиксация доказательств и переписка до решения.",
+    docs: [
+      "ссылка на карточку и история изменений",
+      "претензия или причина ограничения",
+      "фото, маркировка, инструкции, состав, характеристики",
+      "переписка с поддержкой"
+    ],
+    eta: "обычно 1–4 рабочих дня",
+    price: "от 15 000 ₽"
+  },
+  block: {
+    badge: "Ситуация",
+    title: "Блокировка товара, кабинета или ограничение продаж",
+    deliverable: "Позиция и пакет для разблокировки, электронные переговоры и фиксация нарушений процедуры со стороны площадки.",
+    docs: [
+      "уведомление о блокировке и основания (скрин, письмо)",
+      "история обращений и ответы поддержки",
+      "данные по товарам и спорным операциям",
+      "документы по качеству и происхождению (если есть)"
+    ],
+    eta: "обычно 1–3 рабочих дня до первого пакета",
+    price: "от 20 000 ₽"
+  },
+  ip: {
+    badge: "Ситуация",
+    title: "Интеллектуальные права: фото, бренд, контент",
+    deliverable: "Ответ на претензию, переговоры, подготовка доказательств законности использования, при необходимости претензионный и судебный блок.",
+    docs: [
+      "претензия правообладателя или уведомление площадки",
+      "материалы карточки (фото, текст, бренд, упаковка)",
+      "договоры, лицензии, подтверждения происхождения",
+      "переписка с поддержкой и решения по жалобам"
+    ],
+    eta: "обычно 2–6 рабочих дней",
+    price: "от 25 000 ₽"
+  },
+  court: {
+    badge: "Уровень",
+    title: "Суд: иск или защита по уже поданному иску",
+    deliverable: "Иск или возражения, процессуальная логика и доказательства. Если спор можно закрыть переговорами, предложим сначала этот маршрут.",
+    docs: [
+      "иск или претензии и приложенные материалы (если есть)",
+      "договоры, документы по поставке и оплатам",
+      "переписка, отчёты, скрины кабинета",
+      "цель по результату (деньги, восстановление, отмена штрафа)"
+    ],
+    eta: "срок зависит от объёма материалов; первый план работ в течение 1–2 дней",
+    price: "от 55 000 ₽"
   }
+};
 
-  function setActiveChip() {
-    els.chips.forEach(btn => {
-      btn.classList.toggle("is-active", btn.dataset.problem === state.problem);
-    });
-  }
+const els = {
+  chips: document.getElementById("chips"),
+  offerBadge: document.getElementById("offerBadge"),
+  offerTitle: document.getElementById("offerTitle"),
+  offerDeliverable: document.getElementById("offerDeliverable"),
+  offerDocs: document.getElementById("offerDocs"),
+  offerETA: document.getElementById("offerETA"),
+  offerPrice: document.getElementById("offerPrice"),
+  intake: document.getElementById("intake"),
+  topic: document.getElementById("topic")
+};
 
-  function setActiveStage() {
-    els.stageBtns.forEach(btn => {
-      const isActive = btn.dataset.stage === state.stage;
-      btn.classList.toggle("is-active", isActive);
-      btn.setAttribute("aria-pressed", isActive ? "true" : "false");
-    });
-  }
+function renderOffer(key){
+  const o = offers[key] || offers.fine;
 
-  function renderSpec() {
-    const p = getProblem();
+  els.offerBadge.textContent = o.badge;
+  els.offerTitle.textContent = o.title;
+  els.offerDeliverable.textContent = o.deliverable;
+  els.offerETA.textContent = o.eta;
+  els.offerPrice.textContent = o.price;
 
-    els.specTitle.textContent = p.label;
-
-    if (!state.planOpened) {
-      els.specNote.textContent = "Выберите проблему, нажмите «Получить план», затем укажите стадию. Справа появятся подходящие пакеты с составом работ и диапазоном цены.";
-      els.specBody.innerHTML = `
-        <div class="hint">
-          <div class="hint__title">Что будет дальше</div>
-          <div class="hint__text">
-            Мы предложим конкретный пакет работ. Внутри пакета будет понятный артефакт: текст претензии или ответа, пакет приложений,
-            рамка переписки и, если нужно, процессуальные документы.
-          </div>
-        </div>
-      `;
-      return;
-    }
-
-    if (!state.stage) {
-      els.specNote.textContent = p.note;
-      els.specBody.innerHTML = `
-        <div class="hint">
-          <div class="hint__title">Шаг 2</div>
-          <div class="hint__text">
-            Вы уже выбрали проблему. Теперь выберите стадию: досудебная работа, дело в суде или обжалование решения.
-            После выбора мы покажем подходящие пакеты и ориентир стоимости.
-          </div>
-        </div>
-      `;
-      return;
-    }
-
-    let html = "";
-    els.specNote.textContent = p.note;
-
-    if (state.stage === "pretrial") {
-      const now = packages.pretrial_now(state.problem);
-      const next = packages.pretrial_next();
-
-      html += `<div class="pkgGroupTitle">Подходит сейчас</div>`;
-      html += `<div class="pkgs">${now.map(renderPkg).join("")}</div>`;
-
-      html += `
-        <details class="pkgDetails">
-          <summary>Если дойдёт до суда, вот варианты</summary>
-          <div class="pkgs" style="margin-top:10px;">
-            ${next.map(renderPkg).join("")}
-          </div>
-        </details>
-      `;
-    }
-
-    if (state.stage === "in_court") {
-      const list = packages.in_court();
-      html += `<div class="pkgGroupTitle">Пакеты для суда</div>`;
-      html += `<div class="pkgs">${list.map(renderPkg).join("")}</div>`;
-    }
-
-    if (state.stage === "post_judgment") {
-      const list = packages.post_judgment();
-      html += `<div class="pkgGroupTitle">Пакет для обжалования</div>`;
-      html += `<div class="pkgs">${list.map(renderPkg).join("")}</div>`;
-    }
-
-    els.specBody.innerHTML = html;
-  }
-
-  function renderPkg(p) {
-    const items = (p.includes || []).map(i => `<li>${escapeHtml(i)}</li>`).join("");
-    const meta = p.meta ? `<div class="pkg__meta">${escapeHtml(p.meta)}</div>` : "";
-    return `
-      <article class="pkg" aria-label="${escapeAttr(p.name)}">
-        <div class="pkg__head">
-          <div class="pkg__name">${escapeHtml(p.name)}</div>
-          <div class="pkg__price">${escapeHtml(p.price)}</div>
-        </div>
-        <ul class="pkg__list">
-          ${items}
-        </ul>
-        ${meta}
-      </article>
-    `;
-  }
-
-  function openPlan() {
-    state.planOpened = true;
-    els.stageBlock.classList.add("is-visible");
-    renderSpec();
-
-    // лёгкий скролл в пределах блока, чтобы человек заметил новый вопрос
-    els.stageBlock.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-
-  function escapeHtml(str) {
-    return String(str)
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#039;");
-  }
-
-  function escapeAttr(str) {
-    return escapeHtml(str).replaceAll("\n", " ");
-  }
-
-  // Events
-  els.chips.forEach(btn => {
-    btn.addEventListener("click", () => {
-      state.problem = btn.dataset.problem;
-      setActiveChip();
-      renderSpec();
-    });
+  els.offerDocs.innerHTML = "";
+  o.docs.forEach(t => {
+    const li = document.createElement("li");
+    li.textContent = t;
+    els.offerDocs.appendChild(li);
   });
 
-  els.planBtn.addEventListener("click", openPlan);
+  if (els.topic && els.topic.value !== key) els.topic.value = key;
+}
 
-  els.stageBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      state.stage = btn.dataset.stage;
-      setActiveStage();
-      renderSpec();
-    });
-  });
+function setActiveChip(btn){
+  [...els.chips.querySelectorAll(".chip")].forEach(b => b.classList.remove("is-active"));
+  btn.classList.add("is-active");
+}
 
-  // Initial render
-  setActiveChip();
-  setActiveStage();
-  renderSpec();
-})();
+els.chips.addEventListener("click", (e) => {
+  const btn = e.target.closest(".chip");
+  if (!btn) return;
+  const key = btn.dataset.key;
+  setActiveChip(btn);
+  renderOffer(key);
+});
+
+els.topic.addEventListener("change", () => {
+  const key = els.topic.value;
+  const btn = els.chips.querySelector(`.chip[data-key="${key}"]`);
+  if (btn) setActiveChip(btn);
+  renderOffer(key);
+});
+
+function openTelegram(text){
+  const url = "https://t.me/" + TG_HANDLE + "?text=" + encodeURIComponent(text);
+  window.open(url, "_blank", "noopener,noreferrer");
+}
+
+els.intake.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const contact = document.getElementById("contactField").value.trim();
+  const marketplace = document.getElementById("marketplace").value.trim();
+  const topicKey = document.getElementById("topic").value;
+  const desc = document.getElementById("desc").value.trim();
+
+  const o = offers[topicKey] || offers.fine;
+
+  const msg =
+`Селлер.Право — запрос
+
+Имя: ${name || "—"}
+Контакт: ${contact || "—"}
+Площадка: ${marketplace || "—"}
+Ситуация: ${o.title}
+
+Описание:
+${desc || "—"}
+
+Если удобно, пришлю скрины и документы ссылками.`;
+
+  openTelegram(msg);
+});
+
+renderOffer("fine");

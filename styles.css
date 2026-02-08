@@ -595,3 +595,23 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   flex-wrap: wrap;
   align-items:center;
 }
+
+/* DEBUG: показывает, что браузер считает шириной экрана */
+body::after{
+  content: "viewport: DESKTOP";
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  z-index: 9999;
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: rgba(255,196,0,.92);
+  color: #0b0f14;
+  font-weight: 900;
+  font-size: 12px;
+  border: 1px solid rgba(11,15,20,.18);
+}
+@media (max-width: 700px){
+  body::after{ content: "viewport: MOBILE"; }
+}
+

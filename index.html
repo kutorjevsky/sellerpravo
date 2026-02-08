@@ -1,254 +1,627 @@
-<!-- index.html -->
 <!doctype html>
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Селлер.Право — юридический сервис для продавцов маркетплейсов: штрафы, удержания, блокировки, товарные знаки, логистика, убытки." />
-  <title>Селлер.Право — юридический сервис для селлеров маркетплейсов</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Селлер.Право — документы и переговоры по спорам с маркетплейсами</title>
+  <meta name="description" content="Претензии, ответы, переговоры с площадкой, иски и возражения. Без лозунгов: выбираете ситуацию и сразу видите результат, срок и ориентир цены." />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root{
+      --bg: #ffffff;
+      --paper: #ffffff;
+      --ink: #0b0f14;
+      --muted: rgba(11,15,20,.66);
+      --line: rgba(11,15,20,.10);
+      --soft: rgba(11,15,20,.06);
+
+      --red: #e31b23;
+      --yellow: #ffc400;
+
+      --headerBg: #0b0f14;
+      --headerLine: rgba(255,255,255,.12);
+      --headerText: rgba(255,255,255,.86);
+
+      --radius: 16px;
+      --radiusSm: 12px;
+
+      --shadow: 0 10px 30px rgba(11,15,20,.08);
+      --shadow2: 0 18px 50px rgba(11,15,20,.12);
+
+      --max: 1120px;
+    }
+
+    *{ box-sizing: border-box; }
+    html{ scroll-behavior: smooth; }
+    body{
+      margin:0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: geometricPrecision;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+      outline: 3px solid rgba(255,196,0,.55);
+      outline-offset: 2px;
+      border-radius: 10px;
+    }
+
+    .container{
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* HEADER */
+    .header{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--headerBg);
+      border-bottom: 1px solid var(--headerLine);
+    }
+    .header__inner{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 12px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      min-width: 220px;
+    }
+    .brand__logo{
+      width: 44px; height: 30px; flex: 0 0 auto;
+      filter: drop-shadow(0 6px 16px rgba(0,0,0,.18));
+    }
+    .brand__text{
+      font-family: "Inter Tight", Inter, system-ui, sans-serif;
+      letter-spacing: .2px;
+      color: #fff;
+      font-weight: 800;
+      font-size: 18px;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .brand__text .dot{ color: var(--yellow); }
+
+    .toplinks{
+      display:flex;
+      align-items:center;
+      gap: 8px;
+      flex-wrap: nowrap;
+    }
+    .toplink{
+      color: var(--headerText);
+      font-weight: 800;
+      font-size: 13px;
+      padding: 9px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      white-space: nowrap;
+    }
+    .toplink:hover{
+      background: rgba(255,255,255,.10);
+      border-color: rgba(255,255,255,.22);
+      transform: translateY(-1px);
+    }
+    .toplink--tg{
+      border-color: rgba(255,196,0,.30);
+    }
+    .tgDot{
+      width: 8px; height: 8px;
+      border-radius: 2px;
+      background: var(--yellow);
+      display:inline-block;
+      transform: rotate(45deg);
+      margin-right: 8px;
+    }
+
+    .header__actions{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: .2px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      user-select: none;
+      transition: transform .12s ease, box-shadow .12s ease, background .12s ease, border-color .12s ease;
+      white-space: nowrap;
+    }
+    .btn--primary{
+      background: #fff;
+      color: var(--ink);
+      border-color: rgba(255,255,255,.18);
+      box-shadow: 0 10px 30px rgba(0,0,0,.18);
+    }
+    .btn--primary:hover{ transform: translateY(-1px); box-shadow: 0 16px 46px rgba(0,0,0,.22); }
+    .btn--ghost{
+      background: transparent;
+      color: #fff;
+      border-color: rgba(255,255,255,.18);
+    }
+    .btn--ghost:hover{ background: rgba(255,255,255,.08); transform: translateY(-1px); }
+
+    @media (max-width: 980px){
+      .toplinks{ display:none; }
+      .brand{ min-width: unset; }
+    }
+
+    /* HERO */
+    .hero{
+      padding: 34px 0 18px;
+      background:
+        radial-gradient(1200px 500px at 20% 0%, rgba(255,196,0,.18), transparent 60%),
+        radial-gradient(900px 420px at 80% 10%, rgba(227,27,35,.10), transparent 55%),
+        #fff;
+    }
+
+    .hero__grid{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 18px;
+      align-items: start;
+    }
+    @media (max-width: 980px){
+      .hero__grid{ grid-template-columns: 1fr; }
+    }
+
+    .h1{
+      font-family: "Inter Tight", Inter, system-ui, sans-serif;
+      font-size: 40px;
+      line-height: 1.04;
+      margin: 0 0 10px;
+      letter-spacing: -0.6px;
+    }
+    @media (max-width: 520px){
+      .h1{ font-size: 34px; }
+    }
+
+    .sub{
+      font-size: 16px;
+      line-height: 1.55;
+      color: var(--muted);
+      margin: 0 0 18px;
+      max-width: 56ch;
+    }
+
+    .chipsWrap{
+      display:flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .chipsLabel{
+      font-weight: 900;
+      font-size: 12px;
+      letter-spacing: .3px;
+      color: rgba(11,15,20,.66);
+      text-transform: uppercase;
+    }
+    .chips{
+      display:flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    @media (max-width: 700px){
+      .chips{
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 6px;
+        -webkit-overflow-scrolling: touch;
+      }
+      .chips::-webkit-scrollbar{ height: 6px; }
+      .chips::-webkit-scrollbar-thumb{ background: rgba(11,15,20,.12); border-radius: 999px; }
+    }
+
+    .chip{
+      border: 1px solid var(--line);
+      background: rgba(11,15,20,.04);
+      color: var(--ink);
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 13px;
+      cursor: pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      white-space: nowrap;
+    }
+    .chip:hover{ transform: translateY(-1px); border-color: rgba(11,15,20,.18); }
+    .chip.is-active{
+      background: rgba(255,196,0,.20);
+      border-color: rgba(255,196,0,.55);
+    }
+    .chip .bolt{
+      display:inline-block;
+      width: 10px;
+      height: 10px;
+      margin-right: 8px;
+      background: var(--yellow);
+      transform: rotate(45deg);
+      border-radius: 2px;
+    }
+
+    /* Offer card */
+    .offer{
+      background: var(--paper);
+      border: 1px solid rgba(11,15,20,.10);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+    .offer__top{
+      display:flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      font-weight: 900;
+      font-size: 12px;
+      letter-spacing: .3px;
+      text-transform: uppercase;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(227,27,35,.18);
+      background: rgba(227,27,35,.06);
+      color: rgba(11,15,20,.82);
+      white-space: nowrap;
+    }
+    .badge .dot{
+      width: 8px; height: 8px; border-radius: 2px;
+      background: var(--red);
+      transform: rotate(45deg);
+      display:inline-block;
+    }
+
+    .offer__title{
+      font-family: "Inter Tight", Inter, system-ui, sans-serif;
+      font-size: 18px;
+      line-height: 1.2;
+      margin: 6px 0 0;
+      letter-spacing: -0.2px;
+    }
+
+    .offer__rows{
+      display:flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .row{
+      border: 1px solid var(--line);
+      border-radius: var(--radiusSm);
+      padding: 12px 12px;
+      background: rgba(11,15,20,.02);
+    }
+    .row__label{
+      font-weight: 900;
+      font-size: 12px;
+      letter-spacing: .3px;
+      text-transform: uppercase;
+      color: rgba(11,15,20,.62);
+      margin-bottom: 6px;
+    }
+    .row__text{
+      margin:0;
+      color: rgba(11,15,20,.86);
+      font-size: 15px;
+      line-height: 1.45;
+    }
+    .row__list{
+      margin: 0;
+      padding-left: 18px;
+      color: rgba(11,15,20,.86);
+      font-size: 15px;
+      line-height: 1.45;
+    }
+    .row__list li{ margin: 6px 0; }
+
+    .offer__cta{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+    .price{
+      display:flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .price__label{
+      font-weight: 900;
+      font-size: 12px;
+      letter-spacing: .3px;
+      text-transform: uppercase;
+      color: rgba(11,15,20,.62);
+    }
+    .price__value{
+      font-family: "Inter Tight", Inter, system-ui, sans-serif;
+      font-weight: 900;
+      font-size: 20px;
+      letter-spacing: -0.2px;
+    }
+
+    .ctaGroup{
+      display:flex;
+      gap: 10px;
+      align-items:center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    /* Trust strip */
+    .strip{
+      padding: 14px 0 22px;
+      background: #fff;
+    }
+    .strip__inner{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items:center;
+    }
+    .pill{
+      border: 1px solid var(--line);
+      background: rgba(11,15,20,.02);
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 13px;
+      color: rgba(11,15,20,.82);
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+    }
+    .pill:hover{ transform: translateY(-1px); border-color: rgba(11,15,20,.18); background: rgba(11,15,20,.03); }
+    .pill .mark{
+      display:inline-block;
+      width: 10px; height: 10px;
+      border-radius: 2px;
+      transform: rotate(45deg);
+      margin-right: 8px;
+      background: var(--yellow);
+    }
+
+    /* Minimal services */
+    .section{
+      padding: 24px 0;
+    }
+    .section__title{
+      font-family: "Inter Tight", Inter, system-ui, sans-serif;
+      font-size: 18px;
+      letter-spacing: -0.2px;
+      margin: 0 0 12px;
+    }
+    .grid4{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 980px){
+      .grid4{ grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 520px){
+      .grid4{ grid-template-columns: 1fr; }
+    }
+    .card{
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      padding: 14px;
+      box-shadow: var(--shadow);
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      box-shadow: var(--shadow2);
+      border-color: rgba(11,15,20,.18);
+    }
+    .card__kicker{
+      font-weight: 900;
+      font-size: 12px;
+      letter-spacing: .3px;
+      text-transform: uppercase;
+      color: rgba(11,15,20,.60);
+      margin-bottom: 8px;
+    }
+    .card__title{
+      margin: 0 0 8px;
+      font-family: "Inter Tight", Inter, system-ui, sans-serif;
+      font-weight: 900;
+      font-size: 16px;
+      line-height: 1.2;
+    }
+    .card__text{
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    .card__links{
+      margin-top: 12px;
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items:center;
+    }
+    .link{
+      font-weight: 900;
+      font-size: 13px;
+      border-bottom: 2px solid rgba(255,196,0,.0);
+      padding-bottom: 1px;
+      transition: border-color .12s ease;
+    }
+    .link:hover{ border-color: rgba(255,196,0,.75); }
+    .link--muted{ color: rgba(11,15,20,.66); }
+
+    /* Pricing - minimal */
+    .pricingRow{
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .priceCard{
+      flex: 1 1 240px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 14px;
+      background: rgba(11,15,20,.02);
+    }
+    .priceCard__name{
+      font-weight: 900;
+      font-size: 14px;
+      margin: 0 0 6px;
+    }
+    .priceCard__val{
+      font-family: "Inter Tight", Inter, system-ui, sans-serif;
+      font-weight: 900;
+      font-size: 22px;
+      margin: 0 0 8px;
+    }
+    .priceCard__note{
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    /* Contact */
+    .contact{
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+    .form{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    @media (max-width: 700px){
+      .form{ grid-template-columns: 1fr; }
+    }
+    .field label{
+      display:block;
+      font-weight: 900;
+      font-size: 12px;
+      letter-spacing: .3px;
+      text-transform: uppercase;
+      color: rgba(11,15,20,.62);
+      margin-bottom: 6px;
+    }
+    .field input, .field textarea, .field select{
+      width: 100%;
+      padding: 12px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(11,15,20,.14);
+      background: rgba(11,15,20,.02);
+      font: inherit;
+      color: var(--ink);
+    }
+    .field textarea{ min-height: 110px; resize: vertical; }
+    .form__actions{
+      grid-column: 1 / -1;
+      display:flex;
+      justify-content: space-between;
+      align-items:center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+    .small{
+      color: rgba(11,15,20,.60);
+      font-size: 13px;
+      line-height: 1.45;
+      margin: 0;
+      max-width: 72ch;
+    }
+
+    /* Footer */
+    .footer{
+      padding: 22px 0 40px;
+      border-top: 1px solid var(--line);
+      background: #fff;
+    }
+    .footer__inner{
+      display:flex;
+      gap: 14px;
+      align-items:flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .footlinks{
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items:center;
+    }
+  </style>
 </head>
 
-<body>
-  <header class="header" id="top">
-    <div class="container header__inner">
-      <a class="brand" href="#top" aria-label="Селлер.Право — на главную">
-        <svg class="brand__logo" width="42" height="28" viewBox="0 0 84 56" role="img" aria-label="CK">
-          <path d="M27 8c-9 0-17 8-17 20s8 20 17 20h17v-10H27c-4 0-7-4-7-10s3-10 7-10h17V8H27z" fill="var(--red)"/>
-          <path d="M49 8h12l-9 16 11 24H51l-8-18-7 12h-11l12-20L49 8z" fill="var(--ink)"/>
-          <path d="M45 12 34 31h8l-3 13 14-20h-8l0-12z" fill="var(--yellow)"/>
-        </svg>
-        <span class="brand__text">Селлер<span class="dot">.</span>Право</span>
+<body id="top">
+<header class="header">
+  <div class="container header__inner">
+    <a class="brand" href="#top" aria-label="Селлер.Право — на главную">
+      <!-- Замените на assets/logo.svg когда будет готово -->
+      <svg class="brand__logo" width="42" height="28" viewBox="0 0 84 56" role="img" aria-label="CK">
+        <path d="M27 8c-9 0-17 8-17 20s8 20 17 20h17v-10H27c-4 0-7-4-7-10s3-10 7-10h17V8H27z" fill="var(--red)"/>
+        <path d="M49 8h12l-9 16 11 24H51l-8-18-7 12h-11l12-20L49 8z" fill="var(--ink)"/>
+        <path d="M45 12 34 31h8l-3 13 14-20h-8l0-12z" fill="var(--yellow)"/>
+      </svg>
+      <span class="brand__text">Селлер<span class="dot">.</span>Право</span>
+    </a>
+
+    <div class="toplinks" aria-label="Быстрые ссылки">
+      <a class="toplink" href="#problems">С чем работаем</a>
+      <a class="toplink" href="#pricing">Цены</a>
+      <a class="toplink toplink--tg" href="https://t.me/your_channel" target="_blank" rel="noopener noreferrer">
+        <span class="tgDot" aria-hidden="true"></span>Блог в Telegram
       </a>
-
-      <nav class="nav" aria-label="Навигация">
-        <a class="nav__link" href="#diagnostic">Проблемы</a>
-        <a class="nav__link" href="#pricing">Цены</a>
-        <a class="nav__link" href="#tg">Telegram-блог</a>
-      </nav>
-
-      <div class="header__actions">
-        <a class="btn btn--ghost" href="#pricing">Посмотреть цены</a>
-        <a class="btn btn--primary" href="#contact">Получить план</a>
-      </div>
     </div>
-  </header>
 
-  <main>
-    <section class="hero" aria-label="Первый экран">
-      <div class="container hero__grid">
-        <div class="hero__left">
-          <h1 class="h1">
-            Юридическая помощь продавцам маркетплейсов:
-            <span class="accent">штрафы</span>, <span class="accent">удержания</span>, <span class="accent">блокировки</span>, <span class="accent">товарные знаки</span>, <span class="accent">логистика</span>.
-          </h1>
-
-          <p class="lead">
-            Мы разбираем ситуацию по документам и регламентам площадки, фиксируем доказательства и делаем юридическое действие,
-            которое реально можно использовать: претензию, переписку, иск, возражения или обжалование.
-          </p>
-
-          <section class="diagnostic" id="diagnostic" aria-label="Подбор пакета">
-            <div class="diagnostic__header">
-              <h2 class="h2">Выберите проблему</h2>
-              <p class="sub">Мы покажем, что можем предложить по каждой ситуации.</p>
-            </div>
-
-            <div class="chips" role="list" aria-label="Проблемы">
-              <button class="chip is-active" data-problem="penalty" role="listitem" type="button">Штраф от маркетплейса</button>
-              <button class="chip" data-problem="holds" role="listitem" type="button">Неправильные удержания и взаиморасчеты</button>
-              <button class="chip" data-problem="tm" role="listitem" type="button">Товарные знаки и контент</button>
-              <button class="chip" data-problem="blocks" role="listitem" type="button">Блокировка кабинета и карточек</button>
-              <button class="chip" data-problem="loss" role="listitem" type="button">Утеря и утилизация товара</button>
-              <button class="chip" data-problem="damages" role="listitem" type="button">Убытки по вине маркетплейса</button>
-              <button class="chip" data-problem="logistics" role="listitem" type="button">Проблемы с логистикой</button>
-            </div>
-
-            <div class="diagnostic__footer">
-              <button class="btn btn--primary" id="planBtn" type="button">Получить план</button>
-            </div>
-
-            <div class="stage" id="stageBlock" aria-live="polite">
-              <div class="stage__head">
-                <h3 class="h3">Где сейчас дело</h3>
-                <p class="sub">Нам важно понимать стадию, потому что набор документов и тактика различаются.</p>
-              </div>
-
-              <div class="stage__options" role="group" aria-label="Стадия">
-                <button class="stageBtn" data-stage="pretrial" type="button" aria-pressed="false">Досудебное урегулирование</button>
-                <button class="stageBtn" data-stage="in_court" type="button" aria-pressed="false">Дело уже в суде</button>
-                <button class="stageBtn" data-stage="post_judgment" type="button" aria-pressed="false">Суд уже был, я не согласен с решением</button>
-              </div>
-
-              <noscript>
-                <p class="fine">
-                  Скрипты отключены. Тогда просто напишите проблему и стадию в обращении ниже, мы всё равно разберёмся.
-                </p>
-              </noscript>
-            </div>
-          </section>
-        </div>
-
-        <aside class="hero__right" aria-label="Подходящие пакеты">
-          <div class="spec">
-            <div class="spec__top">
-              <div class="spec__badge">
-                <span class="bolt" aria-hidden="true">⚡</span>
-                <span id="specTitle">Штраф от маркетплейса</span>
-              </div>
-              <div class="spec__note" id="specNote">
-                Выберите проблему, нажмите «Получить план», затем укажите стадию. Справа появятся подходящие пакеты с составом работ и диапазоном цены.
-              </div>
-            </div>
-
-            <div class="spec__body" id="specBody">
-              <div class="hint">
-                <div class="hint__title">Что будет дальше</div>
-                <div class="hint__text">
-                  Мы предложим конкретный пакет работ. Внутри пакета будет понятный артефакт: текст претензии или ответа, пакет приложений,
-                  рамка переписки и, если нужно, процессуальные документы.
-                </div>
-              </div>
-            </div>
-
-            <div class="spec__bottom">
-              <a class="btn btn--ghost btn--full" href="#contact">Перейти к обращению</a>
-              <p class="fine fine--center">
-                Никаких таймеров, автозвонков и прочей мелкой цифровой токсичности. Мы отвечаем по делу.
-              </p>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <section class="section section--paper" id="pricing" aria-label="Цены">
-      <div class="container">
-        <div class="section__head">
-          <h2 class="h2">Цены без тумана</h2>
-          <p class="sub">Диапазон зависит от объёма материала и срочности. Состав работ фиксируем до старта.</p>
-        </div>
-
-        <div class="grid3">
-          <article class="price">
-            <div class="price__head">
-              <span class="pill pill--yellow">Досудебка</span>
-              <h3 class="h3">Быстрый старт</h3>
-              <div class="price__sum">6 000 – 10 000 ₽</div>
-            </div>
-            <p class="price__text">Правовой анализ, подготовка претензии или ответа на уведомление, устная консультация.</p>
-          </article>
-
-          <article class="price">
-            <div class="price__head">
-              <span class="pill pill--red">Переговоры</span>
-              <h3 class="h3">С перепиской</h3>
-              <div class="price__sum">10 000 – 15 000 ₽</div>
-            </div>
-            <p class="price__text">То же самое плюс переговоры по электронной почте и ведение переписки по рамке.</p>
-          </article>
-
-          <article class="price">
-            <div class="price__head">
-              <span class="pill pill--yellow">Суд</span>
-              <h3 class="h3">Документы и участие</h3>
-              <div class="price__sum">от 15 000 ₽</div>
-            </div>
-            <p class="price__text">Иск или возражения, упрощённое производство, участие в заседании, обжалование.</p>
-          </article>
-        </div>
-
-        <div class="fine fine--wide">
-          Если вам нужна фиксированная цена, это решается скучно и надёжно: мы описываем объём работ и границы, после чего закрепляем стоимость договором.
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="tg" aria-label="Telegram-блог">
-      <div class="container">
-        <div class="section__head">
-          <h2 class="h2">Telegram-блог для селлеров</h2>
-          <p class="sub">Короткие разборы штрафов, удержаний, блокировок и товарных знаков, без инфобизнеса и философии о предназначении бренда.</p>
-        </div>
-
-        <div class="card card--flat">
-          <p class="card__text">
-            Тут должна быть ссылка на ваш Telegram. Вставьте её вместо заглушки.
-          </p>
-          <a class="btn btn--primary" href="https://t.me/your_channel" target="_blank" rel="noopener noreferrer">Открыть Telegram</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--paper" id="contact" aria-label="Контакты">
-      <div class="container">
-        <div class="contact">
-          <div class="contact__left">
-            <h2 class="h2">Отправить материалы</h2>
-            <p class="sub">
-              Опишите проблему и стадию. Если документы уже лежат в облаке, дайте ссылку. Мы вернёмся с планом действий и рамкой стоимости.
-            </p>
-
-            <div class="contact__meta">
-              <div class="metaRow"><span class="metaKey">Формат</span><span class="metaVal">удалённо, по документам</span></div>
-              <div class="metaRow"><span class="metaKey">Ответ</span><span class="metaVal">обычно в течение 1 рабочего дня</span></div>
-              <div class="metaRow"><span class="metaKey">Принцип</span><span class="metaVal">без спама и автозвонков</span></div>
-            </div>
-          </div>
-
-          <div class="contact__right">
-            <form class="form" action="mailto:you@example.com" method="post" enctype="text/plain">
-              <label class="field">
-                <span class="field__label">Имя</span>
-                <input class="input" name="name" type="text" placeholder="Как к вам обращаться" required />
-              </label>
-
-              <label class="field">
-                <span class="field__label">Контакт (Telegram или email)</span>
-                <input class="input" name="contact" type="text" placeholder="@username или email" required />
-              </label>
-
-              <label class="field">
-                <span class="field__label">Коротко о ситуации</span>
-                <textarea class="input input--area" name="message" rows="7" placeholder="Площадка, что произошло, суммы, сроки, что уже сделали, ссылки на документы"></textarea>
-              </label>
-
-              <label class="field field--check">
-                <input type="checkbox" required />
-                <span>Я согласен на обработку данных для ответа по обращению</span>
-              </label>
-
-              <button class="btn btn--primary btn--full" type="submit">Отправить</button>
-
-              <p class="fine fine--center">
-                Для нормальной формы без mailto подключите Formspree или Netlify Forms и замените action.
-              </p>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer" aria-label="Подвал">
-    <div class="container footer__inner">
-      <div class="footer__left">
-        <div class="footer__brand">Селлер<span class="dot">.</span>Право</div>
-        <div class="footer__muted">Юридический сервис для продавцов маркетплейсов.</div>
-      </div>
-      <div class="footer__right">
-        <a class="footer__link" href="#diagnostic">Проблемы</a>
-        <a class="footer__link" href="#pricing">Цены</a>
-        <a class="footer__link" href="#contact">Контакты</a>
-      </div>
+    <div class="header__actions">
+      <a class="btn btn--ghost" href="#pricing">Цены</a>
+      <a class="btn btn--primary" href="#contact">Проверить ситуацию</a>
     </div>
-  </footer>
+  </div>
+</header>
 
-  <script src="script.js"></script>
-</body>
-</html>
+<main>
+  <section class="hero">
+    <div class="container hero__grid">
+      <div>
+        <h1 class="h1">Документы и переговоры по спорам с маркетплейсами.</h1>
+        <p class="sub">
+          Претензии, ответы, электронные переговоры, иски и возражения. Вы выбираете ситуацию и

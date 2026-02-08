@@ -644,4 +644,403 @@
       <aside class="offer" aria-live="polite">
         <div class="offer__top">
           <div>
-            <div class="
+            <div class="badge"><span class="dot" aria-hidden="true"></span><span id="offerBadge">Ситуация</span></div>
+            <h2 class="offer__title" id="offerTitle">Штраф или претензия площадки</h2>
+          </div>
+        </div>
+
+        <div class="offer__rows">
+          <div class="row">
+            <div class="row__label">Вы получаете</div>
+            <p class="row__text" id="offerDeliverable">
+              Готовый ответ или претензию под регламент площадки и ведение электронных переговоров до результата или понятного “упора”.
+            </p>
+          </div>
+
+          <div class="row">
+            <div class="row__label">Нужно от вас</div>
+            <ul class="row__list" id="offerDocs">
+              <li>уведомление о штрафе или претензии (скрин или письмо)</li>
+              <li>карточка товара и история изменений</li>
+              <li>переписка с поддержкой</li>
+              <li>документы по поставке и качеству (если есть)</li>
+            </ul>
+          </div>
+
+          <div class="row">
+            <div class="row__label">Срок первого результата</div>
+            <p class="row__text" id="offerETA">обычно 1–3 рабочих дня до первого документа</p>
+          </div>
+        </div>
+
+        <div class="offer__cta">
+          <div class="price">
+            <div class="price__label">Ориентир</div>
+            <div class="price__value" id="offerPrice">от 12 000 ₽</div>
+          </div>
+          <div class="ctaGroup">
+            <a class="btn btn--ghost" style="color: var(--ink); background: rgba(11,15,20,.04); border-color: rgba(11,15,20,.12);" href="#pricing">Посмотреть пакеты</a>
+            <a class="btn btn--primary" href="#contact">Проверить ситуацию</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="strip">
+    <div class="container strip__inner">
+      <a class="pill" href="pricing.html"><span class="mark" aria-hidden="true"></span>Цена фиксируется до старта работ</a>
+      <a class="pill" href="process.html"><span class="mark" aria-hidden="true"></span>Переписка и переговоры в электронном виде</a>
+      <a class="pill" href="principles.html"><span class="mark" aria-hidden="true"></span>Если перспектива слабая, говорим прямо</a>
+    </div>
+  </section>
+
+  <section class="section" aria-label="Каталог услуг">
+    <div class="container">
+      <h3 class="section__title">Что мы делаем</h3>
+
+      <div class="grid4">
+        <div class="card">
+          <div class="card__kicker">Документы</div>
+          <h4 class="card__title">Претензия и позиция</h4>
+          <p class="card__text">Готовим документ так, чтобы он работал в реальном регламенте площадки.</p>
+          <div class="card__links">
+            <a class="link" href="situations.html">С чем работаем</a>
+            <a class="link link--muted" href="pricing.html">Цена</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card__kicker">Переговоры</div>
+          <h4 class="card__title">Электронные переговоры</h4>
+          <p class="card__text">Ведём переписку с площадкой и фиксируем логику, чтобы не терять позицию.</p>
+          <div class="card__links">
+            <a class="link" href="process.html">Как работаем</a>
+            <a class="link link--muted" href="pricing.html">Цена</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card__kicker">Суд</div>
+          <h4 class="card__title">Иски и заявления</h4>
+          <p class="card__text">Если без суда не обойтись, готовим процессуальные документы и позицию.</p>
+          <div class="card__links">
+            <a class="link" href="pricing.html#court">Пакеты</a>
+            <a class="link link--muted" href="cases.html">Примеры</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card__kicker">Защита</div>
+          <h4 class="card__title">Возражения на иск</h4>
+          <p class="card__text">Строим защиту, сокращаем риски и не пишем “всё подряд”.</p>
+          <div class="card__links">
+            <a class="link" href="pricing.html#defense">Пакеты</a>
+            <a class="link link--muted" href="faq.html">FAQ</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="pricing" aria-label="Цены">
+    <div class="container">
+      <h3 class="section__title">Цены</h3>
+
+      <div class="pricingRow">
+        <div class="priceCard">
+          <p class="priceCard__name">Документ</p>
+          <p class="priceCard__val">от 12 000 ₽</p>
+          <p class="priceCard__note">Один документ под ситуацию: претензия, ответ, позиция.</p>
+        </div>
+
+        <div class="priceCard">
+          <p class="priceCard__name">Документ + переговоры</p>
+          <p class="priceCard__val">от 25 000 ₽</p>
+          <p class="priceCard__note">Документ и ведение электронных переговоров по кейсу.</p>
+        </div>
+
+        <div class="priceCard">
+          <p class="priceCard__name">Суд: иск</p>
+          <p class="priceCard__val">от 60 000 ₽</p>
+          <p class="priceCard__note">Иск, комплект приложений, процессуальная логика.</p>
+        </div>
+
+        <div class="priceCard">
+          <p class="priceCard__name">Суд: защита</p>
+          <p class="priceCard__val">от 55 000 ₽</p>
+          <p class="priceCard__note">Возражения, ходатайства, акцент на рисках и доказательствах.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="link" href="pricing.html">Подробная матрица цен</a>
+        <a class="link link--muted" href="principles.html">Принципы работы</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact" aria-label="Проверить ситуацию">
+    <div class="container">
+      <h3 class="section__title">Проверить ситуацию</h3>
+
+      <div class="contact">
+        <p class="small">
+          Это не “заявка”. Это быстрый вход в работу: вы описываете кейс, и мы отвечаем, какой документ имеет смысл делать,
+          какой пакет подходит и что нужно для старта. Если кейс слабый, мы так и пишем.
+        </p>
+
+        <form class="form" id="intake">
+          <div class="field">
+            <label for="name">Имя</label>
+            <input id="name" name="name" autocomplete="name" placeholder="Сергей" />
+          </div>
+
+          <div class="field">
+            <label for="contact">Контакт</label>
+            <input id="contact" name="contact" placeholder="@telegram или email" />
+          </div>
+
+          <div class="field">
+            <label for="marketplace">Площадка</label>
+            <select id="marketplace" name="marketplace">
+              <option>Wildberries</option>
+              <option>Ozon</option>
+              <option>Яндекс Маркет</option>
+              <option>СберМегаМаркет</option>
+              <option>Другая</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="topic">Ситуация</label>
+            <select id="topic" name="topic">
+              <option value="fine">Штраф или претензия</option>
+              <option value="returns">Удержания и возвраты</option>
+              <option value="card">Карточка и ТЗ</option>
+              <option value="block">Блокировка</option>
+              <option value="ip">Интеллектуальные права</option>
+              <option value="court">Суд</option>
+            </select>
+          </div>
+
+          <div class="field" style="grid-column: 1 / -1;">
+            <label for="desc">Коротко по делу</label>
+            <textarea id="desc" name="desc" placeholder="Что случилось, какие суммы, какие сроки и что уже сделали. Ссылки на скрины можно вставить текстом."></textarea>
+          </div>
+
+          <div class="form__actions">
+            <p class="small">Отправка откроет Telegram с готовым текстом (без магии и без “ботов”).</p>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <button class="btn btn--primary" type="submit">Открыть Telegram</button>
+              <a class="btn btn--ghost" href="https://t.me/your_channel" target="_blank" rel="noopener noreferrer">Читать блог</a>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <p class="small" style="margin-top:10px;">
+        Юридическая информация и примеры: <a class="link" href="cases.html">кейсы</a>, <a class="link" href="faq.html">FAQ</a>, <a class="link" href="process.html">как устроена работа</a>.
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div style="max-width: 56ch;">
+      <div style="font-weight:900; font-family:'Inter Tight', Inter, system-ui, sans-serif;">Селлер<span style="color:var(--red)">.</span>Право</div>
+      <p class="small" style="margin-top:8px;">
+        Документы и переговоры по спорам с маркетплейсами. Без лозунгов: только предмет, сроки, риски и результат.
+      </p>
+    </div>
+
+    <div class="footlinks" aria-label="Ссылки">
+      <a class="link" href="situations.html">С чем работаем</a>
+      <a class="link" href="pricing.html">Цены подробно</a>
+      <a class="link" href="https://t.me/your_channel" target="_blank" rel="noopener noreferrer">Telegram</a>
+      <a class="link link--muted" href="policy.html">Политика</a>
+      <a class="link link--muted" href="requisites.html">Реквизиты</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Настройте под себя:
+  const TG_HANDLE = "your_handle"; // без @, например: sellerpravo
+  // Если вместо личного аккаунта вы используете чат/бот, замените ссылку ниже в openTelegram()
+
+  const offers = {
+    fine: {
+      badge: "Ситуация",
+      title: "Штраф или претензия площадки",
+      deliverable: "Готовый ответ или претензию под регламент площадки и ведение электронных переговоров до результата или понятного “упора”.",
+      docs: [
+        "уведомление о штрафе или претензии (скрин или письмо)",
+        "карточка товара и история изменений",
+        "переписка с поддержкой",
+        "документы по поставке и качеству (если есть)"
+      ],
+      eta: "обычно 1–3 рабочих дня до первого документа",
+      price: "от 12 000 ₽"
+    },
+    returns: {
+      badge: "Ситуация",
+      title: "Удержания, возвраты, “необоснованные списания”",
+      deliverable: "Претензия и позиция по удержаниям, электронные переговоры, подготовка пакета для возврата денег или зачёта.",
+      docs: [
+        "отчёты по удержаниям и детализация списаний",
+        "доказательства отгрузки и приемки (УПД, накладные)",
+        "переписка и решения по обращениям",
+        "скрины личного кабинета по спорным операциям"
+      ],
+      eta: "обычно 2–5 рабочих дней до первого документа",
+      price: "от 18 000 ₽"
+    },
+    card: {
+      badge: "Ситуация",
+      title: "Карточка товара, ТЗ, несоответствия, модерация",
+      deliverable: "Позиция и документы под правила площадки: ответ на претензию, корректировка формулировок, фиксация доказательств и переписка до решения.",
+      docs: [
+        "ссылка на карточку + история изменений",
+        "претензия или причина блокировки контента",
+        "фото, маркировка, инструкции, состав, характеристики",
+        "переписка с поддержкой"
+      ],
+      eta: "обычно 1–4 рабочих дня",
+      price: "от 15 000 ₽"
+    },
+    block: {
+      badge: "Ситуация",
+      title: "Блокировка товара, кабинета или ограничение продаж",
+      deliverable: "Документированная позиция и пакет для разблокировки, электронные переговоры и фиксация нарушений процедуры со стороны площадки.",
+      docs: [
+        "уведомление о блокировке и основания (скрин, письмо)",
+        "история обращений и ответы поддержки",
+        "данные по товарам и спорным операциям",
+        "документы по качеству и происхождению (если есть)"
+      ],
+      eta: "обычно 1–3 рабочих дня до первого пакета",
+      price: "от 20 000 ₽"
+    },
+    ip: {
+      badge: "Ситуация",
+      title: "Интеллектуальные права: фото, бренд, контент",
+      deliverable: "Ответ на претензию, переговоры, подготовка доказательств законности использования, при необходимости претензионный и судебный блок.",
+      docs: [
+        "претензия правообладателя или уведомление площадки",
+        "материалы карточки (фото, текст, бренд, упаковка)",
+        "договоры, лицензии, подтверждения происхождения",
+        "переписка с поддержкой и решения по жалобам"
+      ],
+      eta: "обычно 2–6 рабочих дней",
+      price: "от 25 000 ₽"
+    },
+    court: {
+      badge: "Уровень",
+      title: "Суд: иск или защита по уже поданному иску",
+      deliverable: "Иск или возражения, процессуальная логика и доказательства. Если спор можно закрыть переговорами, мы предлагаем сначала этот маршрут.",
+      docs: [
+        "иск или претензии и приложенные материалы (если есть)",
+        "договоры, документы по поставке и оплатам",
+        "переписка, отчёты, скрины кабинета",
+        "что вы хотите получить в результате (денежно и по действиям)"
+      ],
+      eta: "срок зависит от объёма материалов; первый план работ в течение 1–2 дней",
+      price: "от 55 000 ₽"
+    }
+  };
+
+  const els = {
+    chips: document.getElementById("chips"),
+    offerBadge: document.getElementById("offerBadge"),
+    offerTitle: document.getElementById("offerTitle"),
+    offerDeliverable: document.getElementById("offerDeliverable"),
+    offerDocs: document.getElementById("offerDocs"),
+    offerETA: document.getElementById("offerETA"),
+    offerPrice: document.getElementById("offerPrice"),
+    intake: document.getElementById("intake"),
+    topic: document.getElementById("topic")
+  };
+
+  function renderOffer(key){
+    const o = offers[key] || offers.fine;
+
+    els.offerBadge.textContent = o.badge;
+    els.offerTitle.textContent = o.title;
+    els.offerDeliverable.textContent = o.deliverable;
+    els.offerETA.textContent = o.eta;
+    els.offerPrice.textContent = o.price;
+
+    els.offerDocs.innerHTML = "";
+    o.docs.forEach(t => {
+      const li = document.createElement("li");
+      li.textContent = t;
+      els.offerDocs.appendChild(li);
+    });
+
+    // синхронизируем селект формы
+    if (els.topic && els.topic.value !== key) els.topic.value = key;
+  }
+
+  function setActiveChip(btn){
+    [...els.chips.querySelectorAll(".chip")].forEach(b => b.classList.remove("is-active"));
+    btn.classList.add("is-active");
+  }
+
+  // chips click
+  els.chips.addEventListener("click", (e) => {
+    const btn = e.target.closest(".chip");
+    if (!btn) return;
+    const key = btn.dataset.key;
+    setActiveChip(btn);
+    renderOffer(key);
+  });
+
+  // select change
+  els.topic.addEventListener("change", () => {
+    const key = els.topic.value;
+    const btn = els.chips.querySelector(`.chip[data-key="${key}"]`);
+    if (btn) setActiveChip(btn);
+    renderOffer(key);
+  });
+
+  function openTelegram(text){
+    // tg:// может не работать на десктопе в браузере, поэтому используем https
+    const url = "https://t.me/" + TG_HANDLE + "?text=" + encodeURIComponent(text);
+    window.open(url, "_blank", "noopener,noreferrer");
+  }
+
+  // form submit
+  els.intake.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const contact = document.getElementById("contact").value.trim();
+    const marketplace = document.getElementById("marketplace").value.trim();
+    const topicKey = document.getElementById("topic").value;
+    const desc = document.getElementById("desc").value.trim();
+
+    const o = offers[topicKey] || offers.fine;
+
+    const msg =
+`Селлер.Право — запрос
+
+Имя: ${name || "—"}
+Контакт: ${contact || "—"}
+Площадка: ${marketplace || "—"}
+Ситуация: ${o.title}
+
+Описание:
+${desc || "—"}
+
+Если удобно, могу прикрепить скрины и документы ссылками.`;
+
+    openTelegram(msg);
+  });
+
+  // init
+  renderOffer("fine");
+</script>
+</body>
+</html>

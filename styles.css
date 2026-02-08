@@ -615,3 +615,11 @@ body::after{
   body::after{ content: "viewport: MOBILE"; }
 }
 
+/* Мобильная шапка: убираем лишнее, чтобы не распирало ширину */
+@media (max-width: 520px){
+  .header__actions .btn--ghost{ display: none; }
+  .brand__text{ font-size: 16px; }
+  .container{ width: min(var(--max), calc(100% - 24px)); } /* чуть меньше боковые поля */
+}
+html, body{ overflow-x: hidden; }
+

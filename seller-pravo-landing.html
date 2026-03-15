@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Селлер.Право — Правовая защита продавцов маркетплейсов</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Onest:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0C0C0A;
+    --bg2: #131311;
+    --bg3: #1A1A17;
+    --acc: #E05520;
+    --acc2: #b84418;
+    --ink: #F2EFE8;
+    --muted: #7A7870;
+    --border: rgba(242,239,232,0.08);
+    --border2: rgba(242,239,232,0.14);
+    --ff: 'Onest', sans-serif;
+    --fd: 'Bebas Neue', sans-serif;
+    --fm: 'JetBrains Mono', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--ff);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  img { display: block; }
+
+  /* ─── NOISE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: .4;
+  }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid transparent;
+    transition: all .3s;
+  }
+  nav.scrolled {
+    background: rgba(12,12,10,.92);
+    backdrop-filter: blur(16px);
+    border-color: var(--border);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo {
+    font-family: var(--fd);
+    font-size: 24px;
+    letter-spacing: .04em;
+    line-height: 1;
+  }
+  .logo span { color: var(--acc); }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--fm);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    font-family: var(--fm);
+    font-size: 11px;
+    padding: 10px 20px;
+    background: var(--acc);
+    color: #fff;
+    border-radius: 4px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    transition: background .2s;
+    cursor: pointer;
+  }
+  .nav-cta:hover { background: var(--acc2); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-top: 120px;
+    padding-bottom: 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Diagonal accent line */
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, var(--acc), transparent);
+    opacity: .3;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--fm);
+    font-size: 11px;
+    color: var(--acc);
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    opacity: 0;
+    animation: fadeUp .6s ease .1s forwards;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--acc);
+  }
+
+  .hero-title {
+    font-family: var(--fd);
+    font-size: clamp(72px, 10vw, 160px);
+    letter-spacing: .01em;
+    line-height: .88;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp .7s ease .2s forwards;
+  }
+  .hero-title .acc { color: var(--acc); }
+  .hero-title .line2 {
+    display: block;
+    padding-left: clamp(40px, 6vw, 120px);
+  }
+  .hero-title .line3 {
+    display: block;
+    padding-left: clamp(80px, 12vw, 240px);
+  }
+
+  .hero-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: flex-end;
+    opacity: 0;
+    animation: fadeUp .7s ease .4s forwards;
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    color: var(--muted);
+    line-height: 1.65;
+    max-width: 480px;
+    border-left: 2px solid var(--acc);
+    padding-left: 1.25rem;
+  }
+  .hero-sub strong { color: var(--ink); }
+
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1.25rem;
+  }
+  .btn-primary {
+    font-family: var(--fm);
+    font-size: 12px;
+    padding: 16px 32px;
+    background: var(--acc);
+    color: #fff;
+    border-radius: 4px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background .2s, transform .15s;
+    border: none;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--acc2); transform: translateY(-1px); }
+
+  .btn-ghost {
+    font-family: var(--fm);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color .2s;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    background: none;
+    border: none;
+  }
+  .btn-ghost::after { content: '→'; transition: transform .2s; }
+  .btn-ghost:hover { color: var(--ink); }
+  .btn-ghost:hover::after { transform: translateX(4px); }
+
+  /* ─── TICKER ─── */
+  .ticker {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: .75rem 0;
+    overflow: hidden;
+    position: relative;
+    background: var(--bg2);
+  }
+  .ticker-track {
+    display: flex;
+    gap: 3rem;
+    animation: ticker 28s linear infinite;
+    width: max-content;
+  }
+  .ticker-item {
+    font-family: var(--fm);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+  }
+  .ticker-item::before { content: '◆'; color: var(--acc); font-size: 7px; }
+
+  /* ─── SECTION HEADERS ─── */
+  .sec-label {
+    font-family: var(--fm);
+    font-size: 10px;
+    color: var(--acc);
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    margin-bottom: .75rem;
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+  }
+  .sec-label::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: var(--acc);
+  }
+  .sec-title {
+    font-family: var(--fd);
+    font-size: clamp(42px, 5vw, 80px);
+    letter-spacing: .02em;
+    line-height: .92;
+    margin-bottom: 1.5rem;
+  }
+  .sec-sub {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 500px;
+    line-height: 1.65;
+  }
+
+  /* ─── PROBLEMS ─── */
+  .problems { padding: 8rem 0; }
+  .problems-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 4rem;
+  }
+  .problem {
+    background: var(--bg);
+    padding: 2.5rem 2.75rem;
+    transition: background .25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .problem::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--acc);
+    transform: scaleY(0);
+    transition: transform .3s ease;
+    transform-origin: top;
+  }
+  .problem:hover { background: var(--bg2); }
+  .problem:hover::before { transform: scaleY(1); }
+  .prob-num {
+    font-family: var(--fm);
+    font-size: 10px;
+    color: var(--acc);
+    letter-spacing: .1em;
+    margin-bottom: 1.25rem;
+  }
+  .prob-title {
+    font-family: var(--fd);
+    font-size: 32px;
+    letter-spacing: .02em;
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .prob-text {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .prob-text strong { color: var(--ink); }
+
+  /* ─── PRODUCTS ─── */
+  .products {
+    padding: 8rem 0;
+    background: var(--bg2);
+    position: relative;
+  }
+  .products-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: end;
+    margin-bottom: 4rem;
+  }
+  .products-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+
+  .product {
+    background: var(--bg2);
+    padding: 2rem 2.5rem;
+    display: grid;
+    grid-template-columns: 280px 1fr auto;
+    gap: 2rem;
+    align-items: center;
+    transition: background .2s;
+    cursor: default;
+  }
+  .product:hover { background: var(--bg3); }
+
+  .prod-left {}
+  .prod-type {
+    font-family: var(--fm);
+    font-size: 9px;
+    color: var(--acc);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin-bottom: .5rem;
+  }
+  .prod-name {
+    font-family: var(--fd);
+    font-size: 28px;
+    letter-spacing: .02em;
+    line-height: 1;
+  }
+
+  .prod-desc {
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  .prod-price {
+    font-family: var(--fm);
+    font-size: 12px;
+    color: var(--ink);
+    white-space: nowrap;
+    text-align: right;
+  }
+  .prod-price span { display: block; font-size: 10px; color: var(--muted); margin-top: 3px; }
+
+  /* ─── HOW IT WORKS ─── */
+  .how { padding: 8rem 0; }
+  .how-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 4rem;
+  }
+  .step {
+    background: var(--bg);
+    padding: 2.25rem 2rem;
+    transition: background .2s;
+  }
+  .step:hover { background: var(--bg2); }
+  .step-n {
+    font-family: var(--fd);
+    font-size: 64px;
+    color: var(--border2);
+    line-height: 1;
+    margin-bottom: 1.25rem;
+    transition: color .2s;
+  }
+  .step:hover .step-n { color: var(--acc); }
+  .step-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: .6rem;
+    line-height: 1.3;
+  }
+  .step-text { font-size: 13px; color: var(--muted); line-height: 1.65; }
+  .step-time {
+    font-family: var(--fm);
+    font-size: 10px;
+    color: var(--acc);
+    letter-spacing: .06em;
+    margin-top: .85rem;
+  }
+
+  /* ─── WHY US ─── */
+  .why {
+    padding: 8rem 0;
+    background: var(--bg2);
+  }
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 4rem;
+  }
+  .why-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2.25rem 2.5rem;
+    transition: border-color .2s;
+  }
+  .why-card:hover { border-color: var(--border2); }
+  .why-icon {
+    width: 40px; height: 40px;
+    border-radius: 8px;
+    background: #E0552015;
+    border: 1px solid #E0552030;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+  .why-icon svg { width: 18px; height: 18px; stroke: var(--acc); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+  .why-title { font-size: 18px; font-weight: 700; margin-bottom: .6rem; line-height: 1.3; }
+  .why-text { font-size: 13.5px; color: var(--muted); line-height: 1.7; }
+
+  /* ─── DISPUTES ─── */
+  .disputes { padding: 8rem 0; }
+  .disputes-header { margin-bottom: 4rem; }
+  .disputes-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .dispute {
+    background: var(--bg);
+    padding: 2rem 2.25rem;
+    transition: background .2s;
+    position: relative;
+  }
+  .dispute:hover { background: var(--bg2); }
+  .dispute-n {
+    font-family: var(--fm);
+    font-size: 10px;
+    color: var(--acc);
+    letter-spacing: .1em;
+    margin-bottom: .75rem;
+  }
+  .dispute-title { font-size: 16px; font-weight: 700; margin-bottom: .5rem; }
+  .dispute-text { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+  /* ─── PROMISE ─── */
+  .promise {
+    padding: 8rem 0;
+    background: var(--bg2);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .promise::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(224,85,32,.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .promise-quote {
+    font-family: var(--fd);
+    font-size: clamp(28px, 4vw, 56px);
+    line-height: 1.15;
+    letter-spacing: .02em;
+    max-width: 900px;
+    margin: 0 auto 3rem;
+  }
+  .promise-quote .acc { color: var(--acc); }
+  .promise-source {
+    font-family: var(--fm);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+  }
+
+  /* ─── FORM ─── */
+  .form-section { padding: 8rem 0; }
+  .form-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+  .form-left {}
+  .form-note {
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+  .form-note strong { color: var(--ink); }
+
+  form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: .5rem; }
+  .form-label {
+    font-family: var(--fm);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+  .form-input, .form-select, .form-textarea {
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    border-radius: 6px;
+    padding: 13px 16px;
+    color: var(--ink);
+    font-family: var(--ff);
+    font-size: 14px;
+    outline: none;
+    transition: border-color .2s;
+    width: 100%;
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: var(--acc);
+  }
+  .form-input::placeholder, .form-textarea::placeholder { color: var(--muted); }
+  .form-select { appearance: none; cursor: pointer; }
+  option { background: var(--bg3); }
+  .form-textarea { resize: vertical; min-height: 120px; }
+  .form-submit {
+    background: var(--acc);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 16px 24px;
+    font-family: var(--fm);
+    font-size: 12px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background .2s, transform .15s;
+    margin-top: .5rem;
+  }
+  .form-submit:hover { background: var(--acc2); transform: translateY(-1px); }
+  .form-disclaimer {
+    font-family: var(--fm);
+    font-size: 10px;
+    color: var(--muted);
+    line-height: 1.6;
+    letter-spacing: .03em;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 3rem 0;
+  }
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-logo {
+    font-family: var(--fd);
+    font-size: 20px;
+    letter-spacing: .04em;
+  }
+  .footer-logo span { color: var(--acc); }
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .footer-links a {
+    font-family: var(--fm);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    transition: color .2s;
+  }
+  .footer-links a:hover { color: var(--ink); }
+  .footer-copy {
+    font-family: var(--fm);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: .06em;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hero-bottom { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-actions { align-items: flex-start; }
+    .problems-grid { grid-template-columns: 1fr; }
+    .product { grid-template-columns: 1fr; gap: 1rem; }
+    .prod-price { text-align: left; }
+    .how-grid { grid-template-columns: 1fr 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .disputes-list { grid-template-columns: 1fr; }
+    .form-wrap { grid-template-columns: 1fr; gap: 3rem; }
+    .products-header { grid-template-columns: 1fr; gap: 1rem; }
+    .footer-inner { flex-direction: column; gap: 1.5rem; text-align: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <div class="logo">СЕЛЛЕР<span>.</span>ПРАВО</div>
+      <ul class="nav-links">
+        <li><a href="#problems">Проблемы</a></li>
+        <li><a href="#products">Услуги</a></li>
+        <li><a href="#how">Как работаем</a></li>
+        <li><a href="#contact">Связаться</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta">Разобрать ситуацию</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">Правовая защита продавцов маркетплейсов</div>
+    <div class="hero-title">
+      МАРКЕТПЛЕЙС<br>
+      <span class="line2">УДЕРЖАЛ</span>
+      <span class="line3"><span class="acc">ДЕНЬГИ?</span></span>
+    </div>
+    <div class="hero-bottom">
+      <div class="hero-sub">
+        Штрафы, блокировки, претензии по товарным знакам, споры с поставщиками.<br><br>
+        <strong>Мы переводим проблему в управляемый правовой спор и ведём её до результата.</strong>
+      </div>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Разобрать ситуацию →</a>
+        <button class="btn-ghost" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Посмотреть услуги</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track" id="ticker">
+    <span class="ticker-item">Wildberries</span>
+    <span class="ticker-item">Штрафы и удержания</span>
+    <span class="ticker-item">Ozon</span>
+    <span class="ticker-item">Блокировка карточек</span>
+    <span class="ticker-item">Яндекс Маркет</span>
+    <span class="ticker-item">Претензии по товарным знакам</span>
+    <span class="ticker-item">Megamarket</span>
+    <span class="ticker-item">Споры с поставщиками</span>
+    <span class="ticker-item">Wildberries</span>
+    <span class="ticker-item">Штрафы и удержания</span>
+    <span class="ticker-item">Ozon</span>
+    <span class="ticker-item">Блокировка карточек</span>
+    <span class="ticker-item">Яндекс Маркет</span>
+    <span class="ticker-item">Претензии по товарным знакам</span>
+    <span class="ticker-item">Megamarket</span>
+    <span class="ticker-item">Споры с поставщиками</span>
+  </div>
+</div>
+
+<!-- PROBLEMS -->
+<section class="problems" id="problems">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">Рыночная боль</div>
+      <div class="sec-title">ПРОТИВ ВАС<br>ИГРАЮТ СИЛЬНЕЕ</div>
+      <div class="sec-sub">У платформы — юридический отдел, регламенты и автоматические удержания. У продавца обычно нет ничего, кроме ощущения несправедливости.</div>
+    </div>
+    <div class="problems-grid reveal">
+      <div class="problem">
+        <div class="prob-num">01 / АСИММЕТРИЯ СИЛЫ</div>
+        <div class="prob-title">ПЛАТФОРМА СИЛЬНЕЕ</div>
+        <div class="prob-text">Маркетплейс сильнее вас <strong>институционально, экономически и информационно</strong>. Оферта, внутренние регламенты, автоудержания — всё работает против продавца. Вы один, они — система.</div>
+      </div>
+      <div class="problem">
+        <div class="prob-num">02 / РАЗРЫВ ПРАВО — БИЗНЕС</div>
+        <div class="prob-title">ЮРИСТЫ НЕ ПОНИМАЮТ</div>
+        <div class="prob-text">Обычные юристы пишут <strong>правильные бумаги, но не понимают предмет конфликта</strong>. Не знают, где спор о штрафной модели, где о возврате, где о товарном знаке. Результат — бумага вместо защиты.</div>
+      </div>
+      <div class="problem">
+        <div class="prob-num">03 / ПОЗДНИЙ СТАРТ</div>
+        <div class="prob-title">ВРЕМЯ ПРОТИВ ВАС</div>
+        <div class="prob-text">Продавец обращается к юристу когда деньги уже удержаны, карточка заблокирована, а в переписке с площадкой <strong>уже написано несколько фраз, вредящих его позиции</strong>. Промедление стоит денег.</div>
+      </div>
+      <div class="problem">
+        <div class="prob-num">04 / НЕТ ВРЕМЕНИ</div>
+        <div class="prob-title">НУЖЕН РЕЗУЛЬТАТ</div>
+        <div class="prob-text">Продавец не хочет слушать лекции о правовой природе смешанного договора. Он хочет знать <strong>четыре вещи: что случилось, что делать, сколько стоит, каков шанс</strong>. Именно это мы и даём.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="container">
+    <div class="products-header reveal">
+      <div>
+        <div class="sec-label">Услуги</div>
+        <div class="sec-title">ЧТО МЫ<br>ДЕЛАЕМ</div>
+      </div>
+      <div class="sec-sub">Продаём не документы — продаём решение конфликта. Каждый продукт закрывает конкретную ситуацию.</div>
+    </div>
+    <div class="products-list reveal">
+      <div class="product">
+        <div class="prod-left">
+          <div class="prod-type">Срочный · 24 часа</div>
+          <div class="prod-name">ЭКСТРЕННАЯ ЗАЩИТА</div>
+        </div>
+        <div class="prod-desc">Деньги удержаны, карточка заблокирована, пришла претензия. Оценка позиции и план действий за 24 часа. Фиксируем ситуацию, пока она не стала хуже.</div>
+        <div class="prod-price">от 9 900 ₽ <span>разбор ситуации</span></div>
+      </div>
+      <div class="product">
+        <div class="prod-left">
+          <div class="prod-type">Досудебный</div>
+          <div class="prod-name">ВЗЫСКАНИЕ И РАЗБЛОКИРОВКА</div>
+        </div>
+        <div class="prod-desc">Претензия, расчёт требований, переговорная позиция, давление на платформу или контрагента. Правовая квалификация с подготовкой к следующей стадии.</div>
+        <div class="prod-price">от 25 000 ₽ <span>проект</span></div>
+      </div>
+      <div class="product">
+        <div class="prod-left">
+          <div class="prod-type">Судебный</div>
+          <div class="prod-name">СУДЕБНОЕ СОПРОВОЖДЕНИЕ</div>
+        </div>
+        <div class="prod-desc">Иск, отзыв, доказательственная стратегия, участие в процессе. Знаем не только материальное право — знаем процесс.</div>
+        <div class="prod-price">от 60 000 ₽ <span>дело</span></div>
+      </div>
+      <div class="product">
+        <div class="prod-left">
+          <div class="prod-type">Превентивный</div>
+          <div class="prod-name">АУДИТ БИЗНЕСА</div>
+        </div>
+        <div class="prod-desc">Проверка договоров, схем поставки, бренда, карточек товара. Находим уязвимости перед претензиями по ИС и потребительскими спорами — до конфликта.</div>
+        <div class="prod-price">от 35 000 ₽ <span>комплекс</span></div>
+      </div>
+      <div class="product" style="background: linear-gradient(135deg, var(--bg3) 0%, #1a140f 100%);">
+        <div class="prod-left">
+          <div class="prod-type">Подписка · Повторяемая выручка</div>
+          <div class="prod-name">ПОСТОЯННОЕ СОПРОВОЖДЕНИЕ</div>
+        </div>
+        <div class="prod-desc">Внешний юридический контур бизнеса. Не пожарная бригада — постоянный инструмент управления риском. Ответы на вопросы, проверка переписки, превентивные сигналы.</div>
+        <div class="prod-price">от 19 900 ₽ <span>в месяц</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">Процесс</div>
+      <div class="sec-title">КАК МЫ<br>РАБОТАЕМ</div>
+    </div>
+    <div class="how-grid reveal">
+      <div class="step">
+        <div class="step-n">01</div>
+        <div class="step-title">Заявка на разбор</div>
+        <div class="step-text">Заполняете короткую форму: описание ситуации, сумма риска, контакт. Три поля — не квест. Вы уже страдаете от проблемы, не стоит добавлять форм.</div>
+        <div class="step-time">⏱ 2 минуты</div>
+      </div>
+      <div class="step">
+        <div class="step-n">02</div>
+        <div class="step-title">Диагностика</div>
+        <div class="step-text">Переводим хаос в структуру: что за спор, с кем, сумма риска, документы, срочность. Первый ответ — в течение 2–4 часов в рабочее время.</div>
+        <div class="step-time">⏱ 2–4 часа</div>
+      </div>
+      <div class="step">
+        <div class="step-n">03</div>
+        <div class="step-title">Письменная позиция</div>
+        <div class="step-text">Выдаём не просто консультацию — письменную карту позиции: факты, правовая квалификация, сценарии, риски, стоимость действий. Это не «поговорили» — это структурированная задача.</div>
+        <div class="step-time">⏱ 24 часа</div>
+      </div>
+      <div class="step">
+        <div class="step-n">04</div>
+        <div class="step-title">Ведём до результата</div>
+        <div class="step-text">Досудебная работа или суд — сопровождаем на каждом этапе. Клиент получает обновления. Без тумана, без пустых обещаний, с письменной аргументацией на каждом шаге.</div>
+        <div class="step-time">До результата</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">Почему мы</div>
+      <div class="sec-title">НА ЧЁМ<br>СТРОИТСЯ ДОВЕРИЕ</div>
+    </div>
+    <div class="why-grid reveal">
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+        </div>
+        <div class="why-title">Узкая специализация</div>
+        <div class="why-text">Только маркетплейсы. Мы знаем внутреннюю логику WB, Ozon, Яндекс Маркета — карточку товара, оферту, систему удержаний, механику возвратов, алгоритмы блокировок. Универсальный юрист этого не знает.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="why-title">Коммерческое мышление</div>
+        <div class="why-text">Понимаем unit economics продавца. Не просто выигрываем спор — просчитываем, стоит ли его вести. Говорим прямо, когда судиться экономически невыгодно.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <div class="why-title">Доказательная культура</div>
+        <div class="why-text">Работаем с тем, что можно показать: переписка, акты, скриншоты, логи, финансовые расчёты. Учим клиента мыслить доказательствами — не эмоциями.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="why-title">Честный прогноз</div>
+        <div class="why-text">Где позиция сильная — говорим. Где слабая — тоже говорим. Нет обещаний, которых нельзя выполнить. Есть ясная оценка риска, сценариев и стоимости. Для рынка это редкость.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DISPUTES -->
+<section class="disputes">
+  <div class="container">
+    <div class="disputes-header reveal">
+      <div class="sec-label">Специализация</div>
+      <div class="sec-title">КАКИЕ СПОРЫ<br>МЫ ВЕДЁМ</div>
+    </div>
+    <div class="disputes-list reveal">
+      <div class="dispute">
+        <div class="dispute-n">01</div>
+        <div class="dispute-title">Штрафы и удержания</div>
+        <div class="dispute-text">Оспариваем незаконные удержания и штрафы маркетплейсов. Анализируем оферту, собираем доказательства, выстраиваем претензионную позицию.</div>
+      </div>
+      <div class="dispute">
+        <div class="dispute-n">02</div>
+        <div class="dispute-title">Блокировки аккаунтов и карточек</div>
+        <div class="dispute-text">Добиваемся разблокировки через юридическое давление. Фиксируем нарушение, требуем мотивированного ответа, при необходимости — суд.</div>
+      </div>
+      <div class="dispute">
+        <div class="dispute-n">03</div>
+        <div class="dispute-title">Претензии правообладателей</div>
+        <div class="dispute-text">Отвечаем на претензии по товарным знакам и обвинения в контрафакте. Оцениваем риски, формируем позицию защиты, ведём переговоры.</div>
+      </div>
+      <div class="dispute">
+        <div class="dispute-n">04</div>
+        <div class="dispute-title">Споры о возвратах и убытках</div>
+        <div class="dispute-text">Ненадлежащее исполнение, некорректная квалификация возврата, взыскание убытков с платформы или покупателя.</div>
+      </div>
+      <div class="dispute">
+        <div class="dispute-n">05</div>
+        <div class="dispute-title">Контрагенты и поставщики</div>
+        <div class="dispute-text">Споры с поставщиками, подрядчиками, фулфилмент-партнёрами. Взыскание долгов, защита от необоснованных требований.</div>
+      </div>
+      <div class="dispute">
+        <div class="dispute-n">06</div>
+        <div class="dispute-title">Правовая профилактика</div>
+        <div class="dispute-text">Аудит договоров, документооборота, уязвимостей бренда. Находим риски до того, как ими воспользуется платформа или правообладатель.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMISE -->
+<section class="promise">
+  <div class="container">
+    <div class="promise-quote reveal">
+      МЫ НЕ ПРОДАЁМ ДОКУМЕНТЫ.<br>МЫ ВОЗВРАЩАЕМ <span class="acc">КОНТРОЛЬ</span><br>НАД ВАШИМ БИЗНЕСОМ.
+    </div>
+    <div class="promise-source reveal">Селлер.Право · Специализированная правовая защита</div>
+    <a href="#contact" class="btn-primary reveal">Разобрать мою ситуацию →</a>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="form-section" id="contact">
+  <div class="container">
+    <div class="form-wrap">
+      <div class="form-left reveal">
+        <div class="sec-label">Связаться</div>
+        <div class="sec-title">РАЗБЕРЁМ<br>СИТУАЦИЮ</div>
+        <div class="form-note">
+          Опишите ситуацию — получите письменную оценку позиции в течение 24 часов.<br><br>
+          <strong>Платный диагностический разбор</strong> — это не просто консультация. Вы получаете структурированную карту: что произошло, что можно сделать, каков шанс, сколько это стоит.<br><br>
+          Разбор стоит от 3 900 до 9 900 ₽ в зависимости от сложности ситуации. Эта сумма идёт в счёт последующей работы.
+        </div>
+      </div>
+      <div class="reveal">
+        <form onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label class="form-label">Ваше имя</label>
+            <input class="form-input" type="text" placeholder="Иван Петров" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Телефон или Telegram</label>
+            <input class="form-input" type="text" placeholder="+7 900 000-00-00 или @username" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Маркетплейс</label>
+            <select class="form-select" required>
+              <option value="" disabled selected>Выберите платформу</option>
+              <option>Wildberries</option>
+              <option>Ozon</option>
+              <option>Яндекс Маркет</option>
+              <option>Megamarket</option>
+              <option>Другое</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Тип проблемы</label>
+            <select class="form-select" required>
+              <option value="" disabled selected>Выберите ситуацию</option>
+              <option>Штраф или удержание денег</option>
+              <option>Блокировка аккаунта или карточки</option>
+              <option>Претензия по товарному знаку</option>
+              <option>Спор о возврате</option>
+              <option>Конфликт с поставщиком / подрядчиком</option>
+              <option>Аудит и профилактика рисков</option>
+              <option>Другое</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Кратко опишите ситуацию</label>
+            <textarea class="form-textarea" placeholder="Что произошло, какая сумма под угрозой, что уже делали..." required></textarea>
+          </div>
+          <button type="submit" class="form-submit">Отправить заявку →</button>
+          <div class="form-disclaimer">Отправляя форму, вы соглашаетесь на обработку персональных данных. Мы не передаём ваши данные третьим лицам.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">СЕЛЛЕР<span>.</span>ПРАВО</div>
+      <ul class="footer-links">
+        <li><a href="#problems">Проблемы</a></li>
+        <li><a href="#products">Услуги</a></li>
+        <li><a href="#how">Как работаем</a></li>
+        <li><a href="#contact">Связаться</a></li>
+      </ul>
+      <div class="footer-copy">© 2024 Селлер.Право</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = 'Заявка отправлена ✓';
+    btn.style.background = '#2a7a4a';
+    btn.disabled = true;
+  }
+
+  // Duplicate ticker for seamless loop
+  const track = document.getElementById('ticker');
+  track.innerHTML += track.innerHTML;
+</script>
+</body>
+</html>

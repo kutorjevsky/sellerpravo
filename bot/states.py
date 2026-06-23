@@ -2,28 +2,50 @@ from aiogram.fsm.state import State, StatesGroup
 
 
 class Registration(StatesGroup):
-    waiting_name = State()
-    waiting_role = State()
+    name = State()
+    role = State()
 
 
 class NewTask(StatesGroup):
-    court = State()
-    court_custom = State()
-    case_name = State()
-    case_number = State()
     client = State()
-    description = State()
+    organ_type = State()
+    organ = State()
+    address = State()
+    case = State()
+    task_type = State()
+    action = State()
+    success = State()
+    deadline = State()
+    priority = State()
+    poa = State()
     notes = State()
-    has_poa = State()
-    date = State()
     confirm = State()
 
 
-class TaskResult(StatesGroup):
-    entering_result = State()
-    entering_fail_reason = State()
+class Comment(StatesGroup):
+    text = State()
 
 
-class AssistantSchedule(StatesGroup):
-    date = State()
-    court = State()
+class Result(StatesGroup):
+    text = State()
+    proof = State()
+
+
+class FailReason(StatesGroup):
+    text = State()
+
+
+class Assign(StatesGroup):
+    plan_date = State()
+
+
+class SetPlanDate(StatesGroup):
+    value = State()
+
+
+class EditTask(StatesGroup):
+    value = State()
+
+
+class Search(StatesGroup):
+    query = State()

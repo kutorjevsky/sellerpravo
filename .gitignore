@@ -1,0 +1,10 @@
+.env
+credentials.json
+*.json.key
+data/
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+.venv/
+venv/

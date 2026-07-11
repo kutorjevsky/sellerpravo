@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Level Consulting — юридическая помощь физлицам и бизнесу в Москве и МО. Бесплатная оценка ситуации за 15 минут в Telegram или WhatsApp.">
+<meta property="og:title" content="Level Consulting — юридическая помощь с ответом за 15 минут">
+<meta property="og:description" content="15 лет на рынке, 50+ юристов, 600+ дел в год. Опишите ситуацию в мессенджере — получите бесплатную оценку перспектив.">
+<meta property="og:type" content="website">
+<title>Level Consulting — юридическая помощь, которая начинается с ответа за 15 минут</title>
+<style>
+  :root{
+    --bg:#0b1220; --bg2:#0f1830; --card:#121c38; --card2:#16214a;
+    --ink:#eef1fb; --ink-dim:#a8b1cf; --line:#22305a;
+    --amber:#e8a33d; --amber-ink:#1a1204;
+    --green:#3ecf8e; --tg:#2ea6de; --wa:#3ecf8e; --danger:#e8654a;
+    --radius:16px;
+    color-scheme: dark;
+  }
+  :root[data-theme="light"]{
+    --bg:#f5f6fb; --bg2:#ffffff; --card:#ffffff; --card2:#eef0fb;
+    --ink:#121628; --ink-dim:#565f82; --line:#e1e4f2;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: light){
+    :root:not([data-theme="dark"]){
+      --bg:#f5f6fb; --bg2:#ffffff; --card:#ffffff; --card2:#eef0fb;
+      --ink:#121628; --ink-dim:#565f82; --line:#e1e4f2;
+      color-scheme: light;
+    }
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:"Inter","Helvetica Neue",Arial,sans-serif;
+    line-height:1.5; -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 20px;}
+  section{padding:72px 0;}
+  @media (max-width:720px){ section{padding:48px 0;} }
+  h1,h2,h3{margin:0 0 .5em; letter-spacing:-0.02em;}
+  h2{font-size:clamp(24px,3.4vw,36px);}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:.08em;
+    color:var(--amber); margin-bottom:14px;
+  }
+  .muted{color:var(--ink-dim);}
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    padding:14px 22px; border-radius:12px; font-weight:700; font-size:15px;
+    text-decoration:none; border:1px solid transparent; cursor:pointer;
+    transition:transform .15s ease, filter .15s ease; white-space:nowrap;
+  }
+  .btn:active{transform:scale(.97);}
+  .btn-primary{background:var(--amber); color:var(--amber-ink);}
+  .btn-primary:hover{filter:brightness(1.08);}
+  .btn-tg{background:var(--tg); color:#fff;}
+  .btn-wa{background:var(--wa); color:#062a1c;}
+  .btn-ghost{background:transparent; border-color:var(--line); color:var(--ink);}
+  .btn-block{width:100%;}
+  .btn-sm{padding:10px 14px; font-size:13px; border-radius:10px;}
+
+  /* Header */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter:blur(10px); border-bottom:1px solid var(--line);
+  }
+  .header-row{display:flex; align-items:center; justify-content:space-between; padding:14px 0;}
+  .logo{font-weight:800; font-size:18px; letter-spacing:-.01em; display:flex; align-items:center; gap:8px;}
+  .logo .dot{width:8px;height:8px;border-radius:50%;background:var(--amber);}
+  nav.mainnav{display:flex; gap:22px; font-size:14px; color:var(--ink-dim);}
+  nav.mainnav a:hover{color:var(--ink);}
+  .header-cta{display:flex; align-items:center; gap:10px;}
+  .phone-link{font-weight:700; font-size:15px; white-space:nowrap;}
+  @media (max-width:860px){
+    nav.mainnav{display:none;}
+    .phone-link{display:none;}
+  }
+
+  /* Hero */
+  .hero{padding-top:56px; padding-bottom:40px;}
+  .hero-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:48px; align-items:center;}
+  @media (max-width:900px){ .hero-grid{grid-template-columns:1fr;} }
+  .hero h1{font-size:clamp(30px,5vw,48px); line-height:1.08;}
+  .hero p.lead{font-size:18px; color:var(--ink-dim); max-width:52ch;}
+  .hero-cta-row{display:flex; flex-wrap:wrap; gap:12px; margin-top:26px;}
+  .trust-row{display:flex; flex-wrap:wrap; gap:22px; margin-top:34px; font-size:13px; color:var(--ink-dim);}
+  .trust-row b{color:var(--ink); font-size:20px; display:block; font-weight:800;}
+  .split-card{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+    padding:22px; display:flex; flex-direction:column; gap:12px;
+  }
+  .split-card h3{font-size:15px; margin:0;}
+  .segment-toggle{display:flex; gap:8px; background:var(--card2); padding:5px; border-radius:12px; margin-bottom:6px;}
+  .segment-toggle button{
+    flex:1; border:none; background:transparent; color:var(--ink-dim); font-weight:700;
+    padding:10px; border-radius:9px; cursor:pointer; font-size:14px; font-family:inherit;
+  }
+  .segment-toggle button.active{background:var(--amber); color:var(--amber-ink);}
+  .quick-form{display:flex; flex-direction:column; gap:10px;}
+  .quick-form input, .quick-form textarea{
+    background:var(--bg2); border:1px solid var(--line); border-radius:10px; padding:12px 14px;
+    color:var(--ink); font-family:inherit; font-size:14px;
+  }
+  .quick-form small{color:var(--ink-dim); font-size:12px;}
+
+  /* Pain tiles */
+  .pain-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+  @media (max-width:860px){ .pain-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .pain-grid{grid-template-columns:1fr;} }
+  .pain-tile{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+    padding:20px; cursor:pointer; text-align:left; font-family:inherit; color:var(--ink);
+    display:flex; flex-direction:column; gap:10px; transition:border-color .15s ease, transform .15s ease;
+  }
+  .pain-tile:hover{border-color:var(--amber); transform:translateY(-2px);}
+  .pain-tile .emoji{font-size:26px;}
+  .pain-tile .tag{font-size:12px; color:var(--ink-dim);}
+  .pain-tile .go{font-size:13px; font-weight:700; color:var(--amber); margin-top:auto;}
+
+  /* How it works */
+  .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
+  @media (max-width:860px){ .steps{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .steps{grid-template-columns:1fr;} }
+  .step{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:20px;}
+  .step .num{
+    width:32px;height:32px;border-radius:9px;background:var(--card2); color:var(--amber);
+    display:flex; align-items:center; justify-content:center; font-weight:800; margin-bottom:12px;
+  }
+
+  /* Cases */
+  .case-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+  @media (max-width:900px){ .case-grid{grid-template-columns:1fr;} }
+  .case-card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:22px; display:flex; flex-direction:column; gap:10px;}
+  .case-card .result{font-size:26px; font-weight:800; color:var(--green);}
+  .case-card .meta{font-size:12px; color:var(--ink-dim); display:flex; gap:10px; flex-wrap:wrap;}
+  .case-card .pill{background:var(--card2); padding:4px 9px; border-radius:99px;}
+  .case-note{font-size:12px; color:var(--ink-dim); margin-top:14px;}
+
+  /* Calculator */
+  .calc-card{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+    padding:28px; display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:start;
+  }
+  @media (max-width:820px){ .calc-card{grid-template-columns:1fr;} }
+  .field{margin-bottom:14px;}
+  .field label{display:block; font-size:13px; color:var(--ink-dim); margin-bottom:6px;}
+  .field input, .field select{
+    width:100%; background:var(--bg2); border:1px solid var(--line); border-radius:10px;
+    padding:11px 12px; color:var(--ink); font-family:inherit; font-size:14px;
+  }
+  .calc-result{background:var(--card2); border-radius:12px; padding:18px;}
+  .calc-result .big{font-size:32px; font-weight:800; color:var(--amber);}
+
+  /* Team */
+  .team-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
+  @media (max-width:900px){ .team-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .team-grid{grid-template-columns:1fr;} }
+  .team-card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:18px; text-align:center;}
+  .avatar{
+    width:72px;height:72px;border-radius:50%;margin:0 auto 12px;
+    background:linear-gradient(135deg,var(--card2),var(--line));
+    display:flex; align-items:center; justify-content:center; font-weight:800; font-size:20px; color:var(--amber);
+  }
+  .team-card h4{margin:0 0 4px; font-size:15px;}
+  .team-card .spec{font-size:12px; color:var(--ink-dim); margin-bottom:14px; min-height:32px;}
+
+  /* Reviews */
+  .review-strip{display:flex; gap:16px; flex-wrap:wrap;}
+  .review-cta{
+    flex:1; min-width:220px; background:var(--card); border:1px solid var(--line);
+    border-radius:var(--radius); padding:20px; display:flex; flex-direction:column; gap:10px;
+  }
+  .stars{color:var(--amber); font-size:15px; letter-spacing:2px;}
+
+  /* FAQ */
+  .faq-item{border-bottom:1px solid var(--line); padding:16px 0;}
+  .faq-q{
+    display:flex; justify-content:space-between; align-items:center; cursor:pointer;
+    font-weight:700; font-size:15px;
+  }
+  .faq-a{max-height:0; overflow:hidden; transition:max-height .25s ease; color:var(--ink-dim); font-size:14px;}
+  .faq-item.open .faq-a{max-height:220px; margin-top:10px;}
+  .faq-plus{transition:transform .2s ease; color:var(--amber); font-size:20px;}
+  .faq-item.open .faq-plus{transform:rotate(45deg);}
+
+  /* Final contact */
+  .contact-card{
+    background:linear-gradient(135deg,var(--card2),var(--card));
+    border:1px solid var(--line); border-radius:20px; padding:36px;
+    display:grid; grid-template-columns:1.1fr .9fr; gap:32px; align-items:center;
+  }
+  @media (max-width:820px){ .contact-card{grid-template-columns:1fr;} }
+  .channels{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+  @media (max-width:480px){ .channels{grid-template-columns:1fr;} }
+
+  footer{border-top:1px solid var(--line); padding:32px 0 96px; font-size:12px; color:var(--ink-dim);}
+  footer a{text-decoration:underline;}
+
+  /* Sticky mobile bar */
+  .mobile-bar{
+    position:fixed; bottom:0; left:0; right:0; z-index:60;
+    display:none; background:var(--bg2); border-top:1px solid var(--line);
+    padding:10px 12px; gap:8px;
+  }
+  .mobile-bar a{
+    flex:1; display:flex; flex-direction:column; align-items:center; gap:2px;
+    font-size:11px; font-weight:700; padding:8px 4px; border-radius:10px;
+  }
+  @media (max-width:720px){ .mobile-bar{display:flex;} body{padding-bottom:74px;} }
+  .mobile-bar .ic{font-size:18px;}
+  .mb-call{background:var(--amber); color:var(--amber-ink);}
+  .mb-tg{background:var(--tg); color:#fff;}
+  .mb-wa{background:var(--wa); color:#062a1c;}
+
+  /* Modal quiz */
+  .overlay{
+    position:fixed; inset:0; background:rgba(4,7,18,.7); backdrop-filter:blur(3px);
+    display:none; align-items:center; justify-content:center; z-index:100; padding:16px;
+  }
+  .overlay.show{display:flex;}
+  .modal{
+    background:var(--bg2); border:1px solid var(--line); border-radius:18px; padding:26px;
+    max-width:460px; width:100%; max-height:86vh; overflow:auto; position:relative;
+  }
+  .modal-close{position:absolute; top:14px; right:16px; background:none; border:none; color:var(--ink-dim); font-size:22px; cursor:pointer;}
+  .modal .qtag{font-size:12px; color:var(--amber); font-weight:700; text-transform:uppercase; letter-spacing:.06em;}
+  .opt-btn{
+    display:block; width:100%; text-align:left; background:var(--card); border:1px solid var(--line);
+    color:var(--ink); padding:13px 14px; border-radius:10px; margin-top:10px; cursor:pointer; font-family:inherit; font-size:14px;
+  }
+  .opt-btn:hover{border-color:var(--amber);}
+  .result-box{background:var(--card); border-radius:12px; padding:16px; margin-top:14px;}
+  .progress{height:4px; background:var(--card); border-radius:99px; overflow:hidden; margin-bottom:16px;}
+  .progress i{display:block; height:100%; background:var(--amber); width:33%; transition:width .25s ease;}
+</style>
+</head>
+<body>
+
+
+
+<header>
+  <div class="wrap header-row">
+    <div class="logo"><span class="dot"></span> Level Consulting</div>
+    <nav class="mainnav">
+      <a href="#pains">Ваша ситуация</a>
+      <a href="#cases">Кейсы</a>
+      <a href="#team">Юристы</a>
+      <a href="#faq">Вопросы</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <div class="header-cta">
+      <a class="phone-link" href="tel:+74993704478">+7 (499) 370‑44‑78</a>
+      <a class="btn btn-tg btn-sm" href="https://t.me/LEVELCONSULTING_TG_USERNAME" target="_blank" rel="noopener">Написать в Telegram</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">● Юристы онлайн — ответ за 15 минут</div>
+        <h1>Опишите ситуацию в мессенджере — юрист оценит перспективы бесплатно, пока вы пьёте кофе</h1>
+        <p class="lead">Level Consulting — 15 лет в Москве и области. 50+ юристов и адвокатов по 20 направлениям: от блокировки счёта по 115‑ФЗ до банкротства и семейных споров. Без форм и «мы вам перезвоним» — сразу в чат к профильному специалисту.</p>
+        <div class="hero-cta-row">
+          <a class="btn btn-tg" href="https://t.me/LEVELCONSULTING_TG_USERNAME?text=Здравствуйте!%20Опишу%20ситуацию%20и%20жду%20оценки." target="_blank" rel="noopener">✈️ Написать в Telegram</a>
+          <a class="btn btn-wa" href="https://wa.me/74993704478?text=Здравствуйте!%20Опишу%20ситуацию%20и%20жду%20оценки." target="_blank" rel="noopener">💬 WhatsApp</a>
+          <a class="btn btn-ghost" href="tel:+74993704478">📞 Позвонить</a>
+        </div>
+        <div class="trust-row">
+          <div><b>15 лет</b>на рынке юруслуг</div>
+          <div><b>50+</b>юристов и адвокатов</div>
+          <div><b>600+</b>дел в судах ежегодно</div>
+          <div><b>90%+</b>дел с положительным исходом</div>
+        </div>
+      </div>
+
+      <div class="split-card">
+        <div class="segment-toggle">
+          <button type="button" class="active" data-seg="person">Я физлицо</button>
+          <button type="button" data-seg="biz">У меня бизнес</button>
+        </div>
+        <h3 id="segTitle">Опишите вопрос в 2 строки — подберём юриста и пришлём план действий</h3>
+        <form class="quick-form" id="quickForm">
+          <input type="text" id="qfName" placeholder="Как к вам обращаться?">
+          <textarea id="qfMsg" rows="3" placeholder="Например: заблокировали счёт по 115‑ФЗ, банк требует документы..."></textarea>
+          <button type="button" class="btn btn-primary btn-block" id="qfSubmit">Получить бесплатную оценку в Telegram</button>
+          <small>Сообщение уйдёт напрямую в чат юристу — без ожидания звонка. Отвечаем в течение 15 минут в рабочее время.</small>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section id="pains">
+    <div class="wrap">
+      <div class="eyebrow">Быстрый разбор</div>
+      <h2>Выберите, что случилось — покажем, что делать дальше</h2>
+      <p class="muted" style="max-width:60ch;margin-bottom:28px;">30 секунд на 2 вопроса — и вы получите не «универсальный совет из интернета», а понятный следующий шаг и контакт профильного юриста.</p>
+      <div class="pain-grid" id="painGrid"></div>
+    </div>
+  </section>
+
+  <section style="background:var(--bg2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="eyebrow">Как это работает</div>
+      <h2>От сообщения до результата — 4 шага, без беготни по офисам</h2>
+      <div class="steps">
+        <div class="step"><div class="num">1</div><h4>Пишете в мессенджер</h4><p class="muted" style="font-size:14px;">Коротко опишите ситуацию — сами или через квиз выше.</p></div>
+        <div class="step"><div class="num">2</div><h4>Юрист оценивает бесплатно</h4><p class="muted" style="font-size:14px;">Профильный специалист отвечает в течение 15 минут в рабочее время.</p></div>
+        <div class="step"><div class="num">3</div><h4>Прозрачный план и смета</h4><p class="muted" style="font-size:14px;">Фиксируем объём работы, сроки и стоимость в договоре — без «допов» в процессе.</p></div>
+        <div class="step"><div class="num">4</div><h4>Отчёт на каждом этапе</h4><p class="muted" style="font-size:14px;">Копии документов и статус дела — в том же чате, где начали.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cases">
+    <div class="wrap">
+      <div class="eyebrow">Кейсы</div>
+      <h2>Что уже получилось у клиентов</h2>
+      <div class="case-grid">
+        <div class="case-card">
+          <div class="result">Счёт разблокирован</div>
+          <p class="muted" style="font-size:14px;">Компания на УСН попала под 115‑ФЗ из‑за нетипичного платежа. Подготовили пояснения и пакет документов для банка и Росфинмониторинга.</p>
+          <div class="meta"><span class="pill">115‑ФЗ</span><span class="pill">бизнес</span></div>
+        </div>
+        <div class="case-card">
+          <div class="result">Долги реструктурированы</div>
+          <p class="muted" style="font-size:14px;">Сопровождение процедуры банкротства физлица: остановили начисление неустоек, согласовали план с кредиторами.</p>
+          <div class="meta"><span class="pill">Банкротство</span><span class="pill">физлицо</span></div>
+        </div>
+        <div class="case-card">
+          <div class="result">Взыскана задержанная зарплата</div>
+          <p class="muted" style="font-size:14px;">Досудебная претензия и иск к работодателю: взысканы долг по зарплате, компенсация и моральный вред.</p>
+          <div class="meta"><span class="pill">Трудовой спор</span><span class="pill">физлицо</span></div>
+        </div>
+      </div>
+      <p class="case-note">Примеры обобщены и очищены от персональных данных клиентов в учебно‑иллюстративных целях. Перед публикацией на боевом сайте замените на реальные кейсы с согласия клиентов и точными суммами/сроками.</p>
+    </div>
+  </section>
+
+  <section id="calculator" style="background:var(--bg2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="eyebrow">Бесплатный инструмент</div>
+      <h2>Калькулятор неустойки за просрочку</h2>
+      <p class="muted" style="max-width:60ch;">Быстро прикиньте сумму, которую может быть должны вам по договору или закону — а затем уточните точный расчёт у юриста.</p>
+      <div class="calc-card">
+        <div>
+          <div class="field">
+            <label>Сумма долга / договора, ₽</label>
+            <input type="number" id="calcSum" placeholder="Например, 500000">
+          </div>
+          <div class="field">
+            <label>Дней просрочки</label>
+            <input type="number" id="calcDays" placeholder="Например, 45">
+          </div>
+          <div class="field">
+            <label>Ставка неустойки</label>
+            <select id="calcRate">
+              <option value="0.001">0,1% в день (типовой договор)</option>
+              <option value="0.0003">1/300 ключевой ставки (ЦБ ≈ 21%)</option>
+              <option value="0.0015">0,3% в день (потребительский договор)</option>
+            </select>
+          </div>
+          <button class="btn btn-primary btn-block" id="calcBtn">Рассчитать</button>
+        </div>
+        <div class="calc-result">
+          <div class="muted" style="font-size:13px;">Ориентировочная сумма неустойки</div>
+          <div class="big" id="calcOut">0 ₽</div>
+          <p class="muted" style="font-size:13px; margin-top:10px;">Это грубая оценка без учёта снижения по ст. 333 ГК РФ и особенностей вашего договора. Точный расчёт и стратегию взыскания подготовит юрист бесплатно.</p>
+          <a class="btn btn-tg btn-block" style="margin-top:6px;" href="https://t.me/LEVELCONSULTING_TG_USERNAME?text=Здравствуйте!%20Хочу%20уточнить%20расчёт%20неустойки." target="_blank" rel="noopener">Уточнить расчёт у юриста</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="team">
+    <div class="wrap">
+      <div class="eyebrow">Команда</div>
+      <h2>Юристы, с которыми вы будете говорить напрямую</h2>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="avatar">АС</div>
+          <h4>Алексей Соколов</h4>
+          <div class="spec">Руководитель практики, 30 лет опыта</div>
+          <a class="btn btn-ghost btn-sm btn-block" href="https://t.me/LEVELCONSULTING_TG_USERNAME?text=Хочу%20проконсультироваться%20с%20Алексеем%20Соколовым" target="_blank" rel="noopener">Написать напрямую</a>
+        </div>
+        <div class="team-card">
+          <div class="avatar">ВГ</div>
+          <h4>Вячеслав Гудков</h4>
+          <div class="spec">Адвокат, уголовные дела</div>
+          <a class="btn btn-ghost btn-sm btn-block" href="https://t.me/LEVELCONSULTING_TG_USERNAME?text=Хочу%20проконсультироваться%20с%20Вячеславом%20Гудковым" target="_blank" rel="noopener">Написать напрямую</a>
+        </div>
+        <div class="team-card">
+          <div class="avatar">ИК</div>
+          <h4>Ирина Киркчу</h4>
+          <div class="spec">Банкротство физлиц и компаний</div>
+          <a class="btn btn-ghost btn-sm btn-block" href="https://t.me/LEVELCONSULTING_TG_USERNAME?text=Хочу%20проконсультироваться%20с%20Ириной%20Киркчу" target="_blank" rel="noopener">Написать напрямую</a>
+        </div>
+        <div class="team-card">
+          <div class="avatar">ВД</div>
+          <h4>Валерия Долина</h4>
+          <div class="spec">Генеральный директор</div>
+          <a class="btn btn-ghost btn-sm btn-block" href="https://t.me/LEVELCONSULTING_TG_USERNAME?text=Хочу%20проконсультироваться%20с%20руководителем" target="_blank" rel="noopener">Написать напрямую</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews" style="background:var(--bg2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="eyebrow">Отзывы</div>
+      <h2>Не верьте нам на слово — читайте на независимых площадках</h2>
+      <div class="review-strip">
+        <div class="review-cta">
+          <div class="stars">★★★★★</div>
+          <h4 style="margin:0;">Яндекс Карты</h4>
+          <p class="muted" style="font-size:14px;">Реальные отзывы клиентов с подтверждённым посещением офиса.</p>
+          <a class="btn btn-ghost btn-sm" href="https://yandex.ru/maps/org/level_consulting" target="_blank" rel="noopener">Смотреть отзывы</a>
+        </div>
+        <div class="review-cta">
+          <div class="stars">★★★★★</div>
+          <h4 style="margin:0;">2ГИС</h4>
+          <p class="muted" style="font-size:14px;">Оценки и комментарии по каждому филиалу отдельно.</p>
+          <a class="btn btn-ghost btn-sm" href="https://2gis.ru/search/Level%20Consulting" target="_blank" rel="noopener">Смотреть отзывы</a>
+        </div>
+        <div class="review-cta">
+          <div class="stars">★★★★★</div>
+          <h4 style="margin:0;">Право.ru / Pravo300</h4>
+          <p class="muted" style="font-size:14px;">Профессиональный рейтинг юрфирм — не маркетинг, а оценка коллег по рынку.</p>
+          <a class="btn btn-ghost btn-sm" href="https://pravo300.ru/" target="_blank" rel="noopener">Открыть рейтинг</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="eyebrow">Вопросы</div>
+      <h2>Отвечаем сразу, без «звоните — узнаете»</h2>
+      <div id="faqList">
+        <div class="faq-item open">
+          <div class="faq-q">Первая консультация правда бесплатная?<span class="faq-plus">+</span></div>
+          <div class="faq-a">Да. Оценка перспектив дела и план действий — бесплатно и без обязательств. Платно только конкретная работа по вашему делу, и её стоимость фиксируется в договоре заранее.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Вы можете гарантировать выигрыш дела?<span class="faq-plus">+</span></div>
+          <div class="faq-a">Нет — и любой юрист, который это обещает, вводит вас в заблуждение. Мы называем реальные шансы на старте и показываем похожие дела из практики, чтобы вы приняли решение осознанно.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Я живу не в Москве — вы поможете?<span class="faq-plus">+</span></div>
+          <div class="faq-a">Да, консультации и часть процессов ведём удалённо через мессенджеры и видеозвонки; для судебных заседаний в очных регионах подключаем партнёров или оформляем доверенность.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Как быстро вы отвечаете?<span class="faq-plus">+</span></div>
+          <div class="faq-a">В рабочее время — в течение 15 минут в Telegram или WhatsApp. Вне рабочего времени отвечаем в начале следующего рабочего дня.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Что если моя ситуация не попадает ни в одну категорию?<span class="faq-plus">+</span></div>
+          <div class="faq-a">Напишите в свободной форме через кнопку в шапке сайта — распределим обращение профильному юристу вручную.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacts">
+    <div class="wrap">
+      <div class="contact-card">
+        <div>
+          <div class="eyebrow">Контакты</div>
+          <h2>Не откладывайте — сроки исковой давности не ждут</h2>
+          <p class="muted">Пн–Пт, 9:00–20:00 · Москва и МО · Работаем и удалённо по всей России</p>
+          <p class="muted" style="font-size:13px;">Юридический адрес и реквизиты уточняются по запросу. Свяжитесь удобным способом — ответим быстро.</p>
+        </div>
+        <div>
+          <div class="channels">
+            <a class="btn btn-tg" href="https://t.me/LEVELCONSULTING_TG_USERNAME" target="_blank" rel="noopener">✈️ Telegram</a>
+            <a class="btn btn-wa" href="https://wa.me/74993704478" target="_blank" rel="noopener">💬 WhatsApp</a>
+            <a class="btn btn-ghost" href="tel:+74993704478">📞 +7 (499) 370‑44‑78</a>
+            <a class="btn btn-ghost" href="https://max.ru/u/LEVELCONSULTING_MAX_USERNAME" target="_blank" rel="noopener">🟠 MAX</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>ООО «Level Consulting». Реклама. Не является публичной офертой. Стоимость услуг определяется индивидуально по итогам бесплатной консультации.</p>
+    <p>ОГРН/ИНН и юридический адрес — уточнить у клиента перед публикацией. <a href="#">Политика обработки персональных данных</a></p>
+  </div>
+</footer>
+
+<div class="mobile-bar">
+  <a class="mb-call" href="tel:+74993704478"><span class="ic">📞</span>Звонок</a>
+  <a class="mb-tg" href="https://t.me/LEVELCONSULTING_TG_USERNAME" target="_blank" rel="noopener"><span class="ic">✈️</span>Telegram</a>
+  <a class="mb-wa" href="https://wa.me/74993704478" target="_blank" rel="noopener"><span class="ic">💬</span>WhatsApp</a>
+</div>
+
+<div class="overlay" id="quizOverlay">
+  <div class="modal" id="quizModal">
+    <button class="modal-close" id="quizClose">×</button>
+    <div class="progress"><i id="quizProgress"></i></div>
+    <div id="quizBody"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var TG = "https://t.me/LEVELCONSULTING_TG_USERNAME";
+  var WA = "https://wa.me/74993704478";
+
+  // Segment toggle (physical / business) — swaps hero form copy only, cosmetic personalization
+  var segBtns = document.querySelectorAll('.segment-toggle button');
+  var segTitle = document.getElementById('segTitle');
+  var qfMsg = document.getElementById('qfMsg');
+  var segCopy = {
+    person: {title:"Опишите вопрос в 2 строки — подберём юриста и пришлём план действий", ph:"Например: заблокировали счёт по 115‑ФЗ, банк требует документы..."},
+    biz: {title:"Опишите ситуацию бизнеса — подключим профильного юриста в течение 15 минут", ph:"Например: заказчик по 44‑ФЗ не подписывает акт, срываются сроки..."}
+  };
+  segBtns.forEach(function(b){
+    b.addEventListener('click', function(){
+      segBtns.forEach(function(x){x.classList.remove('active');});
+      b.classList.add('active');
+      var c = segCopy[b.dataset.seg];
+      segTitle.textContent = c.title;
+      qfMsg.placeholder = c.ph;
+    });
+  });
+
+  document.getElementById('qfSubmit').addEventListener('click', function(){
+    var name = document.getElementById('qfName').value.trim();
+    var msg = document.getElementById('qfMsg').value.trim();
+    var text = (name ? "Меня зовут " + name + ". " : "") + (msg || "Хочу получить бесплатную оценку ситуации.");
+    window.open(TG + "?text=" + encodeURIComponent(text), "_blank");
+  });
+
+  // Neustoyka calculator
+  document.getElementById('calcBtn').addEventListener('click', function(){
+    var sum = parseFloat(document.getElementById('calcSum').value) || 0;
+    var days = parseFloat(document.getElementById('calcDays').value) || 0;
+    var rate = parseFloat(document.getElementById('calcRate').value) || 0;
+    var result = sum * days * rate;
+    document.getElementById('calcOut').textContent = Math.round(result).toLocaleString('ru-RU') + ' ₽';
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    item.querySelector('.faq-q').addEventListener('click', function(){
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i){ i.classList.remove('open'); });
+      if(!wasOpen) item.classList.add('open');
+    });
+  });
+
+  // Pain quiz data: id, emoji, tag, title, questions[], each with options[] -> next or result
+  var PAINS = [
+    {id:'block', emoji:'🏦', tag:'Бизнес · 115‑ФЗ', title:'Заблокировали счёт по 115‑ФЗ',
+      steps:[
+        {q:'Банк уже прислал письменный запрос документов?', opts:['Да, есть срок ответа','Нет, просто заблокировал доступ','Отказал в проведении операции']},
+        {q:'Сколько времени прошло с блокировки?', opts:['Меньше 3 дней','3–10 дней','Больше 10 дней']}
+      ],
+      result:'Обычно на этом этапе помогает грамотно подготовленный пакет пояснений для банка и, при отказе, — жалоба в межведомственную комиссию ЦБ. Профильный юрист: Алексей Соколов.'},
+    {id:'salary', emoji:'💼', tag:'Физлицо · Трудовой спор', title:'Не выплатили зарплату',
+      steps:[
+        {q:'Сколько уже задерживают выплату?', opts:['До 15 дней','15–60 дней','Больше 2 месяцев']},
+        {q:'Есть официальный трудовой договор?', opts:['Да','Частично (серая часть)','Работал(а) неофициально']}
+      ],
+      result:'За задержку зарплаты полагается не только сама сумма, но и проценты за просрочку по ст. 236 ТК РФ. Разбор ведёт трудовая практика Level Consulting.'},
+    {id:'bankrupt', emoji:'📉', tag:'Физлицо · Долги', title:'Хочу списать долги',
+      steps:[
+        {q:'Какая примерно общая сумма долга?', opts:['До 500 000 ₽','500 000 – 3 000 000 ₽','Больше 3 000 000 ₽']},
+        {q:'Есть просрочки по кредитам сейчас?', opts:['Да, уже есть просрочки','Пока плачу, но тяжело','Уже суд/приставы']}
+      ],
+      result:'Ваш случай подходит для предварительной оценки на процедуру банкротства физлица. Профильный юрист: Ирина Киркчу.'},
+    {id:'inherit', emoji:'🏠', tag:'Физлицо · Наследство', title:'Наследство или раздел имущества',
+      steps:[
+        {q:'Есть спор между наследниками/супругами?', opts:['Да, уже спорим','Пока нет, но ожидаю','Нет, просто нужно оформить']},
+        {q:'Прошло больше 6 месяцев с события?', opts:['Нет, ещё в сроке','Да, сроки пропущены','Не уверен(а)']}
+      ],
+      result:'Если сроки пропущены — это не приговор, но действовать нужно быстро: есть механизм восстановления через суд. Разбор ведёт семейная/наследственная практика.'},
+    {id:'gz', emoji:'📋', tag:'Бизнес · Госзакупки', title:'Спор по 44‑ФЗ / 223‑ФЗ',
+      steps:[
+        {q:'В чём суть спора?', opts:['Заказчик не подписывает акт','Включение в РНП','Одностороннее расторжение контракта']},
+        {q:'Сроки обжалования ещё не истекли?', opts:['Да, есть время','Не уверен(а)','Кажется, сроки поджимают']}
+      ],
+      result:'По спорам с РНП и расторжением контрактов счёт идёт на дни — важно успеть подготовить возражения. Профильный юрист: Алексей Соколов.'},
+    {id:'crime', emoji:'⚖️', tag:'Физлицо · Уголовное дело', title:'Уголовное дело / вызов на допрос',
+      steps:[
+        {q:'Ваш статус в деле сейчас?', opts:['Вызывают как свидетеля','Подозреваемый / обвиняемый','Пострадавший']},
+        {q:'Когда назначено ближайшее действие?', opts:['Уже сегодня-завтра','На этой неделе','Пока даты нет']}
+      ],
+      result:'Перед любым процессуальным действием стоит проконсультироваться заранее — это меняет тактику защиты. Адвокат: Вячеслав Гудков.'}
+  ];
+
+  var painGrid = document.getElementById('painGrid');
+  PAINS.forEach(function(p, idx){
+    var tile = document.createElement('button');
+    tile.className = 'pain-tile';
+    tile.type = 'button';
+    tile.innerHTML = '<div class="emoji">'+p.emoji+'</div><div class="tag">'+p.tag+'</div><h3 style="font-size:16px;margin:0;">'+p.title+'</h3><div class="go">Пройти разбор за 30 сек →</div>';
+    tile.addEventListener('click', function(){ openQuiz(idx); });
+    painGrid.appendChild(tile);
+  });
+
+  var overlay = document.getElementById('quizOverlay');
+  var body = document.getElementById('quizBody');
+  var progress = document.getElementById('quizProgress');
+  var state = {painIdx:0, step:0, answers:[]};
+
+  function openQuiz(idx){
+    state = {painIdx:idx, step:0, answers:[]};
+    renderStep();
+    overlay.classList.add('show');
+  }
+  function closeQuiz(){ overlay.classList.remove('show'); }
+  document.getElementById('quizClose').addEventListener('click', closeQuiz);
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) closeQuiz(); });
+
+  function renderStep(){
+    var pain = PAINS[state.painIdx];
+    var totalSteps = pain.steps.length + 1;
+    progress.style.width = Math.round(((state.step)/totalSteps)*100) + '%';
+
+    if(state.step < pain.steps.length){
+      var s = pain.steps[state.step];
+      var html = '<div class="qtag">'+pain.title+' · шаг '+(state.step+1)+' из '+pain.steps.length+'</div><h3>'+s.q+'</h3>';
+      s.opts.forEach(function(opt, oi){
+        html += '<button class="opt-btn" data-oi="'+oi+'">'+opt+'</button>';
+      });
+      body.innerHTML = html;
+      body.querySelectorAll('.opt-btn').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          state.answers.push(btn.textContent);
+          state.step++;
+          renderStep();
+        });
+      });
+    } else {
+      progress.style.width = '100%';
+      var summary = state.answers.map(function(a){ return '• ' + a; }).join('\n');
+      var waText = 'Ситуация: ' + pain.title + '.\n' + summary + '\nПрошу оценить перспективы.';
+      body.innerHTML =
+        '<div class="qtag">Результат разбора</div>' +
+        '<h3>'+pain.title+'</h3>' +
+        '<div class="result-box">'+pain.result+'</div>' +
+        '<div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;">' +
+          '<a class="btn btn-tg" target="_blank" rel="noopener" href="'+TG+'?text='+encodeURIComponent(waText)+'">✈️ Отправить в Telegram</a>' +
+          '<a class="btn btn-wa" target="_blank" rel="noopener" href="'+WA+'?text='+encodeURIComponent(waText)+'">💬 Отправить в WhatsApp</a>' +
+        '</div>';
+    }
+  }
+})();
+</script>
+
+</body>
+</html>
